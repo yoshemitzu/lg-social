@@ -1,0 +1,8 @@
+The following files can be deleted once they are no longer in use:
+
+- questions for prototype.md
+- roadmap.md
+- to-dos.md
+- GEMINI_AGENT_NOTES.md (This file is for internal agent notes and can be deleted once the project is stable and no further debugging is needed.)
+
+**Note:** The `input("Press Enter to exit...")` line in `scripts/make-html.py` and `scripts/launch-report.py` can be removed once debugging is complete and you are satisfied with the script's behavior.

@@ -1,0 +1,31 @@
+# Environment variables
+.env
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Virtual environment
+virtualenv/
+virtual-env/
+venv/
+env/
+
+# IDE-specific files
+.idea/
+.vscode/
+*.iml
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Generated HTML reports
+html/
+
+# Scraped data
+data/BlueskyScrapedData.csv
+
+# Cleanup notes
+cleanup.txt
+GEMINI_AGENT_NOTES.md
