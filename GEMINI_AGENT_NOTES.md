@@ -1,23 +1,23 @@
 
 
-## Issue: `git rm --cached` Command Failure
+## Issue: Persistent HTML Malformation in Jinja2 Template (`report_template.html`)
 
 **Problem Description:**
-Attempts to untrack a file (`.env`) using `git rm --cached .env` have repeatedly failed when executed via `run_shell_command`. The command returns a successful exit code (0) but the file remains tracked according to `git status`.
+Despite refactoring `make-html.py` to use Jinja2, the generated HTML still contains malformed tags and attributes (e.g., unclosed tags, incorrect quoting, concatenated attribute values). This is preventing client-side JavaScript libraries like List.js from functioning correctly.
 
 **Observed Behavior:**
-- `run_shell_command` output for `git rm --cached .env` shows `Exit Code: 0`.
-- Subsequent `git status` still lists `.env` as a tracked, modified file.
-- User's manual execution of `git rm --cached .env` is successful.
+- Browser developer tools show malformed HTML structure within the `<thead>` and `<tbody>` sections.
+- `data-sort` attributes in `<th>` elements and `class` attributes in `<td>` elements are incorrectly rendered.
+- `<a>` tags are malformed.
 
 **Root Cause (Hypothesis):**
-This is likely an interaction issue between `run_shell_command` and Git's internal state, or a subtle difference in the execution environment. It's possible that `run_shell_command` is not correctly propagating the necessary environment or context for Git to fully untrack the file, even though the command itself appears to execute without a direct error from Git.
+While Jinja2 resolves Python f-string escaping issues, the Jinja2 template itself (`report_template.html`) contains errors in its HTML syntax or in how it's using Jinja2 filters/expressions to generate attributes. This leads to invalid HTML being produced, which then breaks client-side JavaScript parsing.
 
 **Current Status:**
-This issue is preventing proper `.env` file exclusion from the repository.
+This issue is preventing the full functionality of the HTML report and is a blocker for further HTML improvements.
 
 **Decision:**
-Debugging this specific `git rm --cached` issue is being deferred. For now, the user will need to manually untrack `.env` if it becomes tracked again. The focus will shift to other project priorities.
+Debugging this specific HTML malformation within the Jinja2 template is being deferred. It requires a very careful, line-by-line review of the template and its Jinja2 expressions to ensure valid HTML output. The focus will shift to other project priorities.
 
 **Action Item for Agent:**
-Do not attempt further programmatic `git rm --cached` operations until explicitly instructed. Revisit this issue with a focus on `run_shell_command`'s interaction with Git's internal state.
+Do not attempt further debugging of this HTML malformation issue until explicitly instructed. Focus on other tasks on the roadmap.

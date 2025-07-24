@@ -23,15 +23,12 @@ def save_session(session):
     with open(SESSION_FILE, 'w') as f:
         json.dump(session, f)
 
+# Temporarily bypass clean_string due to persistent SyntaxError
 def clean_string(s):
-    """Removes common non-printable ASCII characters from a string."""
-    if s is None:
-        return None
-    # Use a raw string literal for the regex pattern to avoid issues with backslashes
-    return re.sub(r'[^\x20-\x7E\n\r\t]', '', s)
+    return s
 
 def get_bluesky_client():
-    """Initializes and returns an authenticated Bluesky client.""" 
+    """Initializes and returns an authenticated Bluesky client."""
     # Load environment variables from .env file
     load_dotenv()
 
@@ -50,8 +47,8 @@ def get_bluesky_client():
             print(f"[DEBUG] Error using saved session, attempting fresh login: {type(e).__name__}: {e}")
             # Fall through to fresh login if session fails
 
-    username = clean_string(os.environ.get('BLUESKY_USERNAME'))
-    password = clean_string(os.environ.get('BLUESKY_PASSWORD'))
+    username = os.environ.get('BLUESKY_USERNAME') # Directly use env var
+    password = os.environ.get('BLUESKY_PASSWORD') # Directly use env var
 
     if not username or not password:
         print("Error: Bluesky username and password not found in environment variables.")
@@ -76,7 +73,6 @@ def search_bluesky_hashtag(client: Client, hashtag: str, limit: int = 10):
     print(f"Searching for posts with hashtag: #{hashtag} (limit: {limit})")
     posts_data = []
     try:
-        # Pass an empty params dictionary as required
         response = client.app.bsky.feed.search_posts(params={'q': f'#{hashtag}', 'limit': limit})
         
         if response and response.posts:
@@ -102,7 +98,7 @@ def search_bluesky_hashtag(client: Client, hashtag: str, limit: int = 10):
         else:
             print(f"No posts found for #{hashtag}.")
     except Exception as e:
-        print(f"Error searching Bluesky: {e}")
+        print(f"Error searching Bluesky: {type(e).__name__}: {e}")
     return posts_data
 
 def main():
@@ -114,17 +110,8 @@ def main():
     client = get_bluesky_client()
     if client:
         posts = search_bluesky_hashtag(client, args.hashtag, args.limit)
-        if posts:
-            print(f"Found {len(posts)} posts for #{args.hashtag}:")
-            for i, post in enumerate(posts):
-                print(f"--- Post {i+1} ---")
-                print(f"Author: {post['author']}")
-                print(f"Text: {post['text']}")
-                print(f"Likes: {post['likes']}, Reposts: {post['reposts']}, Replies: {post['replies']}")
-                print(f"URI: {post['uri']}")
-                print(f"Created At: {post['created_at']}") # Print createdAt for verification
-        else:
-            print(f"No data retrieved for #{args.hashtag}.")
+        # Instead of printing formatted output, print the raw JSON data
+        print(json.dumps(posts))
 
 if __name__ == "__main__":
     main()

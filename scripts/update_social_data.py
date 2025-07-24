@@ -38,57 +38,43 @@ def run_bluesky_scraper(hashtag, limit=10):
     # Capture stdout and stderr
     try:
         process = subprocess.run(command, capture_output=True, text=True, encoding='utf-8', check=True, env=env) # Added env=env
-        print(f"[DEBUG] Scraper stdout for #{hashtag}:\n{process.stdout}")
+        
+        # Parse the JSON output from the scraper
+        if process.stdout:
+            scraped_data = json.loads(process.stdout)
+            print(f"[DEBUG] Scraper stdout for #{hashtag}:\n{process.stdout}") # Still print for debug
+        else:
+            scraped_data = []
+            print(f"[DEBUG] Scraper stdout for #{hashtag} was empty.")
+
         if process.stderr:
             print(f"[DEBUG] Scraper stderr for #{hashtag}:\n{process.stderr}")
+
     except subprocess.CalledProcessError as e:
         print(f"[ERROR] Scraper process failed for #{hashtag} (Exit Code: {e.returncode}):\n{e.stderr}")
         return []
     except FileNotFoundError:
         print(f"[ERROR] bluesky_scraper.py not found at: {scraper_path}")
         return []
+    except json.JSONDecodeError as e:
+        print(f"[ERROR] JSON decoding error for #{hashtag}: {e}\nRaw stdout: {process.stdout}")
+        return []
     except Exception as e:
         print(f"[ERROR] Unexpected error running scraper for #{hashtag}: {e}")
         return []
     
-    # Parse the output. The scraper prints structured data.
-    scraped_data = []
-    current_post = {}
-    for line in process.stdout.splitlines():
-        line = line.strip()
-        if line.startswith("--- Post"):
-            if current_post:
-                scraped_data.append(current_post)
-            current_post = {'hashtag': hashtag}
-        elif line.startswith("Author:"):
-            current_post['author'] = line.replace("Author:", "").strip()
-        elif line.startswith("Text:"):
-            current_post['text'] = line.replace("Text:", "").strip()
-        elif line.startswith("Likes:"):
-            parts = line.split(',')
-            current_post['likes'] = int(parts[0].replace("Likes:", "").strip())
-            current_post['reposts'] = int(parts[1].replace("Reposts:", "").strip())
-            current_post['replies'] = int(parts[2].replace("Replies:", "").strip())
-        elif line.startswith("URI:"):
-            current_post['uri'] = line.replace("URI:", "").strip()
-        elif line.startswith("Created At:"):
-            created_at_str = line.replace("Created At:", "").strip()
-            current_post['created_at'] = created_at_str
-    if current_post:
-        scraped_data.append(current_post)
     print(f"[DEBUG] Scraped {len(scraped_data)} posts for #{hashtag}.")
     return scraped_data
 
-def write_scraped_data_to_csv(data, output_csv_path):
+def write_scraped_data_to_csv(data, output_csv_path, write_header=False):
     print(f"[DEBUG] Writing scraped data to: {output_csv_path}")
     fieldnames = ['hashtag', 'author', 'text', 'likes', 'reposts', 'replies', 'uri', 'created_at']
-    file_exists = os.path.isfile(output_csv_path)
 
     try:
         with open(output_csv_path, 'a', newline='', encoding='utf-8') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            if not file_exists:
-                writer.writeheader()  # Write header only if file is new
+            if write_header:
+                writer.writeheader()  # Write header only if explicitly requested
             writer.writerows(data)
         print(f"[DEBUG] Scraped data written to {output_csv_path}")
     except Exception as e:
@@ -177,7 +163,15 @@ def main():
 
     print("[DEBUG] Starting update_social_data.py main function.")
     hashtags = read_hashtags_from_csv(hashtags_csv_path)
-    all_scraped_data = []
+    
+    # Clear previous scraped data before starting a new run
+    if os.path.exists(output_scraped_csv_path):
+        os.remove(output_scraped_csv_path)
+
+    # Write header for scraped data only once at the beginning
+    write_scraped_data_to_csv([], output_scraped_csv_path, write_header=True)
+
+    all_scraped_data_for_analytics = [] # Collect all data for final analytics
 
     if not hashtags:
         print("[DEBUG] No hashtags found or error reading CSV. Exiting.")
@@ -187,15 +181,19 @@ def main():
         # Remove the # from the hashtag for the scraper argument
         clean_hashtag = hashtag.lstrip('#')
         scraped_posts = run_bluesky_scraper(clean_hashtag, limit=5) # Limiting to 5 for testing
-        all_scraped_data.extend(scraped_posts)
+        
+        if scraped_posts:
+            write_scraped_data_to_csv(scraped_posts, output_scraped_csv_path) # Write incrementally
+            all_scraped_data_for_analytics.extend(scraped_posts)
+        else:
+            print(f"[DEBUG] No posts scraped for #{hashtag}. Skipping incremental write.")
     
-    if all_scraped_data:
-        print("[DEBUG] Processing scraped data...")
-        write_scraped_data_to_csv(all_scraped_data, output_scraped_csv_path)
-        analytics_data = analyze_bluesky_data(all_scraped_data)
+    if all_scraped_data_for_analytics:
+        print("[DEBUG] Processing all scraped data for final analytics...")
+        analytics_data = analyze_bluesky_data(all_scraped_data_for_analytics)
         write_analytics_to_csv(analytics_data, output_analytics_csv_path)
     else:
-        print("No data scraped. Check Bluesky credentials and network connection.")
+        print("No data scraped across all hashtags. Check Bluesky credentials and network connection.")
 
 if __name__ == "__main__":
     main()

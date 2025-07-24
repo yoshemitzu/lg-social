@@ -1,0 +1,22 @@
+metric,hashtag,date,author,value
+daily_posts,EdTech,2025-07-24,,1
+daily_posts,EdTech,2025-07-23,,4
+daily_posts,PeerLearning,2025-07-22,,1
+daily_posts,PeerLearning,2025-07-19,,1
+daily_posts,PeerLearning,2025-07-08,,1
+daily_posts,PeerLearning,2025-07-06,,1
+daily_posts,PeerLearning,2025-07-05,,1
+top_poster_activity,EdTech,,Education Technology News,3
+top_poster_activity,EdTech,,Thamir Aljobori,1
+top_poster_activity,EdTech,,frumbly.bsky.social,1
+top_poster_activity,PeerLearning,,Adrian Segar,2
+top_poster_activity,PeerLearning,,Ryan O'Hara,1
+top_poster_activity,PeerLearning,,Barbara Hilgert,1
+top_poster_activity,PeerLearning,,Simon Dückert,1
+top_poster_engagement,EdTech,,Education Technology News,1
+top_poster_engagement,EdTech,,frumbly.bsky.social,1
+top_poster_engagement,EdTech,,Thamir Aljobori,0
+top_poster_engagement,PeerLearning,,Ryan O'Hara,1
+top_poster_engagement,PeerLearning,,Adrian Segar,1
+top_poster_engagement,PeerLearning,,Barbara Hilgert,1
+top_poster_engagement,PeerLearning,,Simon Dückert,0
