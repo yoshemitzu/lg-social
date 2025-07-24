@@ -78,9 +78,9 @@ The following hashtags are being tracked across various social media platforms.
 ## To-Dos
 
 - [ ] Finalize top 20 hashtags with supporting data (engagement, frequency, uniqueness).
-- [ ] Begin a manually curated `Influencer List.md`.
+- [x] Begin a manually curated `Influencer List.md`.
 - [ ] Build a graph-style visual map of hashtags + people.
-- [ ] Plan post types for social (commentary, repost, remix, ask-me-anything).
+- [x] Plan post types for social (commentary, repost, remix, ask-me-anything).
 - [ ] Develop content hooks for each thematic hashtag.
 - [ ] Finalize HTML rendering improvements.
 - [ ] Begin prototyping a scraping routine for 2-3 platforms.

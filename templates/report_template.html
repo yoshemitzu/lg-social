@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hashtag Links</title>
+  <meta name="description" content="LearnGraph Hashtag Explorer - Discover and analyze educational hashtags across social media.">
+  <meta name="keywords" content="LearnGraph, education, hashtags, social media, knowledge graph, learning, EdTech">
+  <meta name="author" content="LearnGraph Project">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    th {
+      background-color: #f0f0f0;
+      cursor: pointer; /* Indicate clickable for sorting */
+    }
+    th.sort.asc:after {
+      content: '\25B2'; /* Up arrow */
+      margin-left: 5px;
+    }
+    th.sort.desc:after {
+      content: '\25BC'; /* Down arrow */
+      margin-left: 5px;
+    }
+    .search {
+      padding: 8px;
+      margin-bottom: 15px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .copy-btn {
+      margin-left: 5px;
+      padding: 3px 8px;
+      cursor: pointer;
+      background-color: #e0e0e0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 0.8em;
+    }
+    .copy-btn:hover {
+      background-color: #d0d0d0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hashtag Links</h1>
+  <div id="hashtag-table">
+    <input type="text" class="search" placeholder="Search table" />
+    <table>
+      <thead>
+        <tr>
+          {% for header in headers %}
+          <th class="sort" data-sort="{{ header | replace(' 🔗', '') | replace(' ', '') }}">{{ header }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody class="list">
+        {% for row in rows %}
+        <tr>
+          <td class="{{ headers[0] | replace(' 🔗', '') | replace(' ', '') }}">{{ row[0] }} <button class="copy-btn" onclick="copyToClipboard('{{ row[0] | e }}')">Copy</button></td>
+          {% for cell in row[1:] %}
+          <td class="{{ headers[loop.index] | replace(' 🔗', '') | replace(' ', '') }}">{{ cell | safe }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        console.log('Async: Copying to clipboard was successful!');
+      }, function(err) {
+        console.error('Async: Could not copy text: ', err);
+      }); 
+    }
+
+    var options = {
+      valueNames: [
+        {% for header in headers %}
+        '{{ header | replace(' 🔗', '') | replace(' ', '') }}'{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    };
+    var userList = new List('hashtag-table', options);
+  </script>
+</body>
+</html>

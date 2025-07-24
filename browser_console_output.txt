@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hashtag Links</title>
+  <meta name="description" content="LearnGraph Hashtag Explorer - Discover and analyze educational hashtags across social media.">
+  <meta name="keywords" content="LearnGraph, education, hashtags, social media, knowledge graph, learning, EdTech">
+  <meta name="author" content="LearnGraph Project">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    th {
+      background-color: #f0f0f0;
+      cursor: pointer; /* Indicate clickable for sorting */
+    }
+    th.sort.asc:after {
+      content: '\25B2'; /* Up arrow */
+      margin-left: 5px;
+    }
+    th.sort.desc:after {
+      content: '\25BC'; /* Down arrow */
+      margin-left: 5px;
+    }
+    .search {
+      padding: 8px;
+      margin-bottom: 15px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .copy-btn {
+      margin-left: 5px;
+      padding: 3px 8px;
+      cursor: pointer;
+      background-color: #e0e0e0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 0.8em;
+    }
+    .copy-btn:hover {
+      background-color: #d0d0d0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hashtag Links</h1>
+  <div id="hashtag-table">
+    <input type="text" class="search" placeholder="Search table" />
+    <table>
+      <thead>
+        <tr>
+          
+          <th class="sort" data-sort="Hashtag">Hashtag</th>
+          
+          <th class="sort" data-sort="Instagram">Instagram</th>
+          
+          <th class="sort" data-sort="Reddit">Reddit</th>
+          
+          <th class="sort" data-sort="YouTube">YouTube</th>
+          
+          <th class="sort" data-sort="Bluesky">Bluesky</th>
+          
+        </tr>
+      </thead>
+      <tbody class="list">
+        
+        <tr>
+          <td class="Hashtag">#LearnGraph <button class="copy-btn" onclick="copyToClipboard('#LearnGraph')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/learngraph" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23LearnGraph" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23LearnGraph" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23LearnGraph" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#EdTech <button class="copy-btn" onclick="copyToClipboard('#EdTech')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/edtech" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23EdTech" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23EdTech" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23EdTech" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#OpenEducation <button class="copy-btn" onclick="copyToClipboard('#OpenEducation')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/openeducation" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23OpenEducation" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23OpenEducation" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23OpenEducation" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#FutureOfEducation <button class="copy-btn" onclick="copyToClipboard('#FutureOfEducation')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/futureofeducation" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23FutureOfEducation" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23FutureOfEducation" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23FutureOfEducation" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#PersonalizedLearning <button class="copy-btn" onclick="copyToClipboard('#PersonalizedLearning')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/personalizedlearning" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23PersonalizedLearning" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23PersonalizedLearning" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23PersonalizedLearning" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#LifelongLearning <button class="copy-btn" onclick="copyToClipboard('#LifelongLearning')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/lifelonglearning" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23LifelongLearning" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23LifelongLearning" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23LifelongLearning" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#KnowledgeGraph <button class="copy-btn" onclick="copyToClipboard('#KnowledgeGraph')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/knowledgegraph" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23KnowledgeGraph" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23KnowledgeGraph" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23KnowledgeGraph" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#KnowledgeMapping <button class="copy-btn" onclick="copyToClipboard('#KnowledgeMapping')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/knowledgemapping" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23KnowledgeMapping" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23KnowledgeMapping" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23KnowledgeMapping" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#PeerLearning <button class="copy-btn" onclick="copyToClipboard('#PeerLearning')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/peerlearning" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23PeerLearning" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23PeerLearning" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23PeerLearning" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#MentorshipMatters <button class="copy-btn" onclick="copyToClipboard('#MentorshipMatters')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/mentorshipmatters" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23MentorshipMatters" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23MentorshipMatters" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23MentorshipMatters" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#LearningCommunities <button class="copy-btn" onclick="copyToClipboard('#LearningCommunities')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/learningcommunities" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23LearningCommunities" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23LearningCommunities" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23LearningCommunities" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#CognitiveScience <button class="copy-btn" onclick="copyToClipboard('#CognitiveScience')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/cognitivescience" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23CognitiveScience" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23CognitiveScience" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23CognitiveScience" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#HowWeLearn <button class="copy-btn" onclick="copyToClipboard('#HowWeLearn')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/howwelearn" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23HowWeLearn" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23HowWeLearn" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23HowWeLearn" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#AIinEducation <button class="copy-btn" onclick="copyToClipboard('#AIinEducation')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/aiineducation" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23AIinEducation" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23AIinEducation" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23AIinEducation" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#LearningAnalytics <button class="copy-btn" onclick="copyToClipboard('#LearningAnalytics')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/learninganalytics" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23LearningAnalytics" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23LearningAnalytics" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23LearningAnalytics" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#Metacognition <button class="copy-btn" onclick="copyToClipboard('#Metacognition')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/metacognition" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23Metacognition" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23Metacognition" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23Metacognition" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#Web3Education <button class="copy-btn" onclick="copyToClipboard('#Web3Education')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/web3education" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23Web3Education" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23Web3Education" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23Web3Education" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#DecentralizedLearning <button class="copy-btn" onclick="copyToClipboard('#DecentralizedLearning')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/decentralizedlearning" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.youtube.com/results?search_query=%23DecentralizedLearning" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://bsky.app/search?q=%23DecentralizedLearning" target="_blank">YouTube</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#SemanticWeb <button class="copy-btn" onclick="copyToClipboard('#SemanticWeb')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/semanticweb" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23SemanticWeb" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23SemanticWeb" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23SemanticWeb" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+        <tr>
+          <td class="Hashtag">#BlueskySocial <button class="copy-btn" onclick="copyToClipboard('#BlueskySocial')">Copy</button></td>
+          
+          <td class="Instagram"><a href="https://www.instagram.com/explore/tags/blueskysocial" target="_blank">Instagram</a></td>
+          
+          <td class="Reddit"><a href="https://www.reddit.com/search/?q=%23BlueskySocial" target="_blank">Reddit</a></td>
+          
+          <td class="YouTube"><a href="https://www.youtube.com/results?search_query=%23BlueskySocial" target="_blank">YouTube</a></td>
+          
+          <td class="Bluesky"><a href="https://bsky.app/search?q=%23BlueskySocial" target="_blank">Bluesky</a></td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        console.log('Async: Copying to clipboard was successful!');
+      }, function(err) {
+        console.error('Async: Could not copy text: ', err);
+      }); 
+    }
+
+    var options = {
+      valueNames: [
+        
+        'Hashtag',
+        
+        'Instagram',
+        
+        'Reddit',
+        
+        'YouTube',
+        
+        'Bluesky'
+        
+      ]
+    };
+    var userList = new List('hashtag-table', options);
+  </script>
+</body>
+</html>

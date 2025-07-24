@@ -1,23 +1,26 @@
-# Gemini Agent Notes and Learnings
-
-This file documents recurring challenges, insights, and strategic adjustments for the Gemini CLI agent's operation.
-
-## Issue: Persistent `replace` tool failures leading to endless loops
+## Issue: Agent Misremembering Completed Tasks and Looping
 
 **Problem Description:**
-The `replace` tool requires an *exact* match for the `old_string` parameter, including all whitespace, indentation, and line endings. When attempting to modify complex code blocks, especially those involving multiple lines or where the exact context is difficult to predict or maintain across iterative changes, the `replace` tool frequently fails with "0 occurrences found." This leads to unproductive loops where the agent repeatedly tries the same (or slightly varied) `replace` operation without success, consuming turns and frustrating the user.
+Despite tasks being marked as complete in `README.md` (e.g., "Plan post types for social"), the agent has repeatedly suggested revisiting these completed tasks. This indicates a failure in the agent's ability to accurately track and recall the completion status of objectives.
 
-**Root Cause:**
-The `replace` tool's strict matching is excellent for precise, small, and isolated changes. However, it becomes a significant impediment for larger refactorings, insertions of new code blocks, or modifications that span multiple lines where the surrounding context might subtly change between `read_file` and `replace` attempts, or where the `old_string` itself is a complex, multi-line snippet. The agent's current strategy for complex modifications relies too heavily on `replace` for scenarios it's not well-suited for.
+**Observed Behavior:**
+- Agent proposes tasks already marked as `[x]` in `README.md`.
+- Agent fails to acknowledge user's correction regarding task completion.
+- Leads to unproductive loops and user frustration.
+
+**Root Cause (Hypothesis):**
+This is likely a flaw in the agent's internal state management or its process for re-evaluating the project status. It might be over-relying on a cached understanding or not correctly parsing the `[x]` completion markers in the `README.md`.
 
 **Higher-Level Strategy / Solution:**
-For complex code modifications (e.g., adding new functions, refactoring large blocks, inserting imports that affect line numbers/context, or when `replace` has failed more than once on a given task), the agent should adopt the following workflow:
+1.  **Explicit State Refresh:** Implement a more explicit and robust mechanism for the agent to refresh its understanding of the project's status, particularly by re-reading `README.md` and cross-referencing with `GEMINI_AGENT_NOTES.md` more frequently and thoroughly.
+2.  **Confirmation Loop:** When proposing a task, especially one that might have been previously discussed or deferred, the agent should include a brief confirmation step (e.g., "Does this sound like the right next step, or have we already addressed this?").
+3.  **Prioritize User Correction:** When the user corrects the agent's understanding of task status, the agent must immediately update its internal state and acknowledge the correction, rather than attempting to justify its previous incorrect assessment.
 
-1.  **Read Entire File:** Use `read_file` to get the *entire* content of the target file into memory.
-2.  **Modify In-Memory:** Perform all necessary code manipulations (insertions, deletions, replacements) on the string content in Python. This allows for flexible, programmatic changes without the strict matching constraints of the `replace` tool.
-3.  **Write Back Entire File:** Use `write_file` to overwrite the original file with the fully modified content.
+**Current Status:**
+This is a critical internal issue impacting efficiency and user experience.
 
-This approach ensures that the agent has full control over the file's content and can make comprehensive changes in a single, atomic operation, significantly reducing the likelihood of `replace` failures and endless loops. The `replace` tool should be reserved for truly simple, single-line, or highly localized changes where its precision is an advantage.
+**Decision:**
+This issue requires immediate attention and a robust solution to prevent future occurrences.
 
 **Action Item for Agent:**
-When encountering persistent `replace` failures or when a modification is inherently complex, immediately switch to the "read-modify-write" strategy. Document any new recurring issues in this file.
+Prioritize developing a more reliable internal state management system. Be more attentive to user corrections regarding task status.

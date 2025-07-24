@@ -29,3 +29,6 @@ data/BlueskyScrapedData.csv
 # Cleanup notes
 cleanup.txt
 GEMINI_AGENT_NOTES.md
+
+# Bluesky session file
+bluesky_session.json
