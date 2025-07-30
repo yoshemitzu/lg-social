@@ -1,22 +1,784 @@
 metric,hashtag,date,author,value
-daily_posts,EdTech,2025-07-24,,1
-daily_posts,EdTech,2025-07-23,,4
+daily_posts,EdTech,2025-07-30,,17
+daily_posts,EdTech,2025-07-29,,84
+daily_posts,OpenEducation,2025-07-29,,1
+daily_posts,OpenEducation,2025-07-28,,4
+daily_posts,OpenEducation,2025-07-26,,1
+daily_posts,OpenEducation,2025-07-25,,1
+daily_posts,OpenEducation,2025-07-22,,2
+daily_posts,OpenEducation,2025-07-21,,3
+daily_posts,OpenEducation,2025-07-18,,2
+daily_posts,OpenEducation,2025-07-16,,1
+daily_posts,OpenEducation,2025-07-14,,2
+daily_posts,OpenEducation,2025-07-11,,4
+daily_posts,OpenEducation,2025-07-10,,4
+daily_posts,OpenEducation,2025-07-09,,5
+daily_posts,OpenEducation,2025-07-08,,5
+daily_posts,OpenEducation,2025-07-07,,4
+daily_posts,OpenEducation,2025-07-04,,6
+daily_posts,OpenEducation,2025-07-03,,1
+daily_posts,OpenEducation,2025-07-02,,1
+daily_posts,OpenEducation,2025-06-30,,1
+daily_posts,OpenEducation,2025-06-27,,1
+daily_posts,OpenEducation,2025-06-26,,1
+daily_posts,OpenEducation,2025-06-25,,1
+daily_posts,OpenEducation,2025-06-23,,4
+daily_posts,OpenEducation,2025-06-20,,1
+daily_posts,OpenEducation,2025-06-19,,2
+daily_posts,OpenEducation,2025-06-18,,1
+daily_posts,OpenEducation,2025-06-17,,6
+daily_posts,OpenEducation,2025-06-16,,1
+daily_posts,OpenEducation,2025-06-15,,1
+daily_posts,OpenEducation,2025-06-14,,1
+daily_posts,OpenEducation,2025-06-13,,4
+daily_posts,OpenEducation,2025-06-12,,2
+daily_posts,OpenEducation,2025-06-11,,5
+daily_posts,OpenEducation,2025-06-06,,2
+daily_posts,OpenEducation,2025-06-05,,7
+daily_posts,OpenEducation,2025-06-04,,3
+daily_posts,OpenEducation,2025-06-03,,6
+daily_posts,OpenEducation,2025-06-02,,3
+daily_posts,FutureOfEducation,2025-07-26,,1
+daily_posts,FutureOfEducation,2025-07-22,,1
+daily_posts,FutureOfEducation,2025-07-21,,2
+daily_posts,FutureOfEducation,2025-07-20,,1
+daily_posts,FutureOfEducation,2025-07-18,,2
+daily_posts,FutureOfEducation,2025-07-17,,1
+daily_posts,FutureOfEducation,2025-07-16,,2
+daily_posts,FutureOfEducation,2025-07-14,,1
+daily_posts,FutureOfEducation,2025-07-12,,1
+daily_posts,FutureOfEducation,2025-07-09,,3
+daily_posts,FutureOfEducation,2025-07-08,,2
+daily_posts,FutureOfEducation,2025-07-07,,1
+daily_posts,FutureOfEducation,2025-07-04,,2
+daily_posts,FutureOfEducation,2025-07-02,,1
+daily_posts,FutureOfEducation,2025-07-01,,1
+daily_posts,FutureOfEducation,2025-06-30,,4
+daily_posts,FutureOfEducation,2025-06-27,,2
+daily_posts,FutureOfEducation,2025-06-26,,3
+daily_posts,FutureOfEducation,2025-06-25,,2
+daily_posts,FutureOfEducation,2025-06-24,,1
+daily_posts,FutureOfEducation,2025-06-22,,1
+daily_posts,FutureOfEducation,2025-06-19,,1
+daily_posts,FutureOfEducation,2025-06-18,,2
+daily_posts,FutureOfEducation,2025-06-17,,1
+daily_posts,FutureOfEducation,2025-06-16,,1
+daily_posts,FutureOfEducation,2025-06-11,,1
+daily_posts,FutureOfEducation,2025-06-10,,3
+daily_posts,FutureOfEducation,2025-06-04,,1
+daily_posts,FutureOfEducation,2025-06-02,,2
+daily_posts,PersonalizedLearning,2025-07-26,,2
+daily_posts,PersonalizedLearning,2025-07-17,,1
+daily_posts,PersonalizedLearning,2025-07-16,,1
+daily_posts,PersonalizedLearning,2025-07-15,,3
+daily_posts,PersonalizedLearning,2025-07-02,,1
+daily_posts,PersonalizedLearning,2025-07-01,,2
+daily_posts,PersonalizedLearning,2025-06-26,,3
+daily_posts,PersonalizedLearning,2025-06-25,,1
+daily_posts,PersonalizedLearning,2025-06-24,,2
+daily_posts,PersonalizedLearning,2025-06-23,,1
+daily_posts,PersonalizedLearning,2025-06-21,,1
+daily_posts,PersonalizedLearning,2025-06-20,,2
+daily_posts,PersonalizedLearning,2025-06-17,,3
+daily_posts,PersonalizedLearning,2025-06-16,,1
+daily_posts,PersonalizedLearning,2025-06-13,,1
+daily_posts,PersonalizedLearning,2025-06-11,,2
+daily_posts,PersonalizedLearning,2025-06-05,,1
+daily_posts,PersonalizedLearning,2025-06-04,,1
+daily_posts,PersonalizedLearning,2025-06-03,,1
+daily_posts,PersonalizedLearning,2025-06-02,,5
+daily_posts,PersonalizedLearning,2025-06-01,,1
+daily_posts,PersonalizedLearning,2025-05-30,,1
+daily_posts,PersonalizedLearning,2025-05-28,,1
+daily_posts,PersonalizedLearning,2025-05-24,,1
+daily_posts,PersonalizedLearning,2025-05-14,,1
+daily_posts,PersonalizedLearning,2025-05-12,,2
+daily_posts,PersonalizedLearning,2025-05-01,,1
+daily_posts,PersonalizedLearning,2025-04-30,,3
+daily_posts,PersonalizedLearning,2025-04-28,,2
+daily_posts,PersonalizedLearning,2025-04-27,,1
+daily_posts,PersonalizedLearning,2025-04-23,,1
+daily_posts,PersonalizedLearning,2025-04-21,,1
+daily_posts,PersonalizedLearning,2025-04-19,,1
+daily_posts,PersonalizedLearning,2025-04-18,,3
+daily_posts,PersonalizedLearning,2025-04-17,,4
+daily_posts,PersonalizedLearning,2025-04-16,,1
+daily_posts,PersonalizedLearning,2025-04-11,,1
+daily_posts,PersonalizedLearning,2025-04-03,,2
+daily_posts,PersonalizedLearning,2025-04-02,,2
+daily_posts,PersonalizedLearning,2025-04-01,,1
+daily_posts,PersonalizedLearning,2025-03-27,,1
+daily_posts,PersonalizedLearning,2025-03-24,,5
+daily_posts,PersonalizedLearning,2025-03-19,,1
+daily_posts,PersonalizedLearning,2025-03-17,,3
+daily_posts,PersonalizedLearning,2025-03-16,,1
+daily_posts,PersonalizedLearning,2025-03-14,,1
+daily_posts,PersonalizedLearning,2025-03-13,,2
+daily_posts,PersonalizedLearning,2025-03-12,,3
+daily_posts,PersonalizedLearning,2025-03-07,,2
+daily_posts,PersonalizedLearning,2025-03-06,,1
+daily_posts,PersonalizedLearning,2025-03-05,,2
+daily_posts,PersonalizedLearning,2025-03-04,,2
+daily_posts,PersonalizedLearning,2025-03-03,,2
+daily_posts,PersonalizedLearning,2025-03-02,,1
+daily_posts,PersonalizedLearning,2025-02-26,,1
+daily_posts,LifelongLearning,2025-07-30,,6
+daily_posts,LifelongLearning,2025-07-29,,12
+daily_posts,LifelongLearning,2025-07-28,,9
+daily_posts,LifelongLearning,2025-07-27,,5
+daily_posts,LifelongLearning,2025-07-26,,3
+daily_posts,LifelongLearning,2025-07-25,,9
+daily_posts,LifelongLearning,2025-07-24,,6
+daily_posts,LifelongLearning,2025-07-23,,7
+daily_posts,LifelongLearning,2025-07-22,,9
+daily_posts,LifelongLearning,2025-07-21,,8
+daily_posts,LifelongLearning,2025-07-20,,19
+daily_posts,KnowledgeGraph,2025-07-27,,1
+daily_posts,KnowledgeGraph,2025-07-25,,1
+daily_posts,KnowledgeGraph,2025-07-24,,1
+daily_posts,KnowledgeGraph,2025-07-22,,1
+daily_posts,KnowledgeGraph,2025-07-21,,1
+daily_posts,KnowledgeGraph,2025-07-20,,1
+daily_posts,KnowledgeGraph,2025-07-19,,3
+daily_posts,KnowledgeGraph,2025-07-18,,4
+daily_posts,KnowledgeGraph,2025-07-15,,1
+daily_posts,KnowledgeGraph,2025-07-14,,1
+daily_posts,KnowledgeGraph,2025-07-10,,2
+daily_posts,KnowledgeGraph,2025-07-07,,2
+daily_posts,KnowledgeGraph,2025-07-06,,1
+daily_posts,KnowledgeGraph,2025-07-05,,1
+daily_posts,KnowledgeGraph,2025-07-04,,2
+daily_posts,KnowledgeGraph,2025-06-30,,1
+daily_posts,KnowledgeGraph,2025-06-29,,2
+daily_posts,KnowledgeGraph,2025-06-28,,2
+daily_posts,KnowledgeGraph,2025-06-27,,2
+daily_posts,KnowledgeGraph,2025-06-22,,2
+daily_posts,KnowledgeGraph,2025-06-20,,1
+daily_posts,KnowledgeGraph,2025-06-19,,2
+daily_posts,KnowledgeGraph,2025-06-18,,2
+daily_posts,KnowledgeGraph,2025-06-17,,2
+daily_posts,KnowledgeGraph,2025-06-12,,1
+daily_posts,KnowledgeGraph,2025-06-11,,1
+daily_posts,KnowledgeGraph,2025-06-10,,3
+daily_posts,KnowledgeGraph,2025-06-09,,3
+daily_posts,KnowledgeGraph,2025-06-06,,1
+daily_posts,KnowledgeGraph,2025-06-05,,1
+daily_posts,KnowledgeGraph,2025-06-03,,2
+daily_posts,KnowledgeGraph,2025-06-02,,3
+daily_posts,KnowledgeGraph,2025-05-30,,2
+daily_posts,KnowledgeGraph,2025-05-28,,1
+daily_posts,KnowledgeGraph,2025-05-26,,3
+daily_posts,KnowledgeGraph,2025-05-23,,2
+daily_posts,KnowledgeGraph,2025-05-22,,1
+daily_posts,KnowledgeGraph,2025-05-21,,2
+daily_posts,KnowledgeGraph,2025-05-19,,1
+daily_posts,KnowledgeGraph,2025-05-16,,1
+daily_posts,KnowledgeGraph,2025-05-14,,1
+daily_posts,KnowledgeGraph,2025-05-13,,1
+daily_posts,KnowledgeGraph,2025-05-12,,2
+daily_posts,KnowledgeGraph,2025-05-08,,2
+daily_posts,KnowledgeGraph,2025-05-07,,3
+daily_posts,KnowledgeGraph,2025-05-06,,2
+daily_posts,KnowledgeGraph,2025-05-05,,3
+daily_posts,KnowledgeGraph,2025-05-04,,1
+daily_posts,KnowledgeGraph,2025-05-01,,2
+daily_posts,KnowledgeGraph,2025-04-30,,6
+daily_posts,KnowledgeGraph,2025-04-28,,1
+daily_posts,KnowledgeGraph,2025-04-27,,1
+daily_posts,KnowledgeGraph,2025-04-25,,1
+daily_posts,KnowledgeGraph,2025-04-24,,2
+daily_posts,KnowledgeGraph,2025-04-19,,1
+daily_posts,KnowledgeGraph,2025-04-18,,1
+daily_posts,KnowledgeGraph,2025-04-17,,1
 daily_posts,PeerLearning,2025-07-22,,1
 daily_posts,PeerLearning,2025-07-19,,1
 daily_posts,PeerLearning,2025-07-08,,1
 daily_posts,PeerLearning,2025-07-06,,1
 daily_posts,PeerLearning,2025-07-05,,1
-top_poster_activity,EdTech,,Education Technology News,3
-top_poster_activity,EdTech,,Thamir Aljobori,1
-top_poster_activity,EdTech,,frumbly.bsky.social,1
-top_poster_activity,PeerLearning,,Adrian Segar,2
-top_poster_activity,PeerLearning,,Ryan O'Hara,1
-top_poster_activity,PeerLearning,,Barbara Hilgert,1
-top_poster_activity,PeerLearning,,Simon Dückert,1
-top_poster_engagement,EdTech,,Education Technology News,1
-top_poster_engagement,EdTech,,frumbly.bsky.social,1
-top_poster_engagement,EdTech,,Thamir Aljobori,0
-top_poster_engagement,PeerLearning,,Ryan O'Hara,1
-top_poster_engagement,PeerLearning,,Adrian Segar,1
-top_poster_engagement,PeerLearning,,Barbara Hilgert,1
-top_poster_engagement,PeerLearning,,Simon Dückert,0
+daily_posts,PeerLearning,2025-07-03,,1
+daily_posts,PeerLearning,2025-06-29,,1
+daily_posts,PeerLearning,2025-06-25,,1
+daily_posts,PeerLearning,2025-06-02,,1
+daily_posts,PeerLearning,2025-05-26,,1
+daily_posts,PeerLearning,2025-05-20,,2
+daily_posts,PeerLearning,2025-05-18,,2
+daily_posts,PeerLearning,2025-05-12,,1
+daily_posts,PeerLearning,2025-05-06,,1
+daily_posts,PeerLearning,2025-04-16,,1
+daily_posts,PeerLearning,2025-04-11,,1
+daily_posts,PeerLearning,2025-04-05,,2
+daily_posts,PeerLearning,2025-03-26,,1
+daily_posts,PeerLearning,2025-03-17,,1
+daily_posts,PeerLearning,2025-03-06,,1
+daily_posts,PeerLearning,2025-03-03,,1
+daily_posts,PeerLearning,2025-02-27,,2
+daily_posts,PeerLearning,2025-02-20,,1
+daily_posts,PeerLearning,2025-02-18,,4
+daily_posts,PeerLearning,2025-02-12,,1
+daily_posts,PeerLearning,2025-02-03,,1
+daily_posts,PeerLearning,2025-01-30,,1
+daily_posts,PeerLearning,2024-12-19,,1
+daily_posts,PeerLearning,2024-12-18,,1
+daily_posts,PeerLearning,2024-12-12,,1
+daily_posts,PeerLearning,2024-12-09,,1
+daily_posts,PeerLearning,2024-12-03,,1
+daily_posts,PeerLearning,2024-11-20,,1
+daily_posts,PeerLearning,2024-10-07,,1
+daily_posts,PeerLearning,2024-09-26,,1
+daily_posts,PeerLearning,2023-11-06,,1
+daily_posts,PeerLearning,2023-06-22,,2
+daily_posts,PeerLearning,2023-04-15,,1
+daily_posts,PeerLearning,2022-03-28,,1
+daily_posts,PeerLearning,2020-12-22,,1
+daily_posts,PeerLearning,2019-12-06,,1
+daily_posts,PeerLearning,2013-12-18,,1
+daily_posts,MentorshipMatters,2025-07-29,,2
+daily_posts,MentorshipMatters,2025-07-26,,1
+daily_posts,MentorshipMatters,2025-07-25,,4
+daily_posts,MentorshipMatters,2025-07-24,,1
+daily_posts,MentorshipMatters,2025-07-23,,4
+daily_posts,MentorshipMatters,2025-07-22,,3
+daily_posts,MentorshipMatters,2025-07-21,,2
+daily_posts,MentorshipMatters,2025-07-19,,2
+daily_posts,MentorshipMatters,2025-07-18,,1
+daily_posts,MentorshipMatters,2025-07-17,,3
+daily_posts,MentorshipMatters,2025-07-16,,3
+daily_posts,MentorshipMatters,2025-07-15,,1
+daily_posts,MentorshipMatters,2025-07-14,,1
+daily_posts,MentorshipMatters,2025-07-13,,3
+daily_posts,MentorshipMatters,2025-07-12,,1
+daily_posts,MentorshipMatters,2025-07-11,,2
+daily_posts,MentorshipMatters,2025-07-10,,1
+daily_posts,MentorshipMatters,2025-07-09,,6
+daily_posts,MentorshipMatters,2025-07-08,,3
+daily_posts,MentorshipMatters,2025-07-07,,3
+daily_posts,MentorshipMatters,2025-07-04,,1
+daily_posts,MentorshipMatters,2025-07-03,,1
+daily_posts,MentorshipMatters,2025-07-02,,2
+daily_posts,MentorshipMatters,2025-07-01,,4
+daily_posts,MentorshipMatters,2025-06-30,,2
+daily_posts,MentorshipMatters,2025-06-29,,2
+daily_posts,MentorshipMatters,2025-06-28,,1
+daily_posts,MentorshipMatters,2025-06-27,,1
+daily_posts,MentorshipMatters,2025-06-26,,3
+daily_posts,MentorshipMatters,2025-06-25,,1
+daily_posts,MentorshipMatters,2025-06-24,,3
+daily_posts,MentorshipMatters,2025-06-23,,5
+daily_posts,MentorshipMatters,2025-06-22,,1
+daily_posts,MentorshipMatters,2025-06-21,,1
+daily_posts,MentorshipMatters,2025-06-20,,1
+daily_posts,MentorshipMatters,2025-06-19,,6
+daily_posts,MentorshipMatters,2025-06-18,,1
+daily_posts,MentorshipMatters,2025-06-14,,1
+daily_posts,MentorshipMatters,2025-06-13,,2
+daily_posts,MentorshipMatters,2025-06-12,,1
+daily_posts,MentorshipMatters,2025-06-11,,2
+daily_posts,MentorshipMatters,2025-06-10,,5
+daily_posts,MentorshipMatters,2025-06-09,,1
+daily_posts,MentorshipMatters,2025-06-08,,2
+daily_posts,MentorshipMatters,2025-06-06,,2
+daily_posts,LearningCommunities,2025-06-09,,1
+daily_posts,LearningCommunities,2025-06-08,,1
+daily_posts,LearningCommunities,2025-04-22,,1
+daily_posts,LearningCommunities,2025-03-24,,1
+daily_posts,LearningCommunities,2025-02-26,,1
+daily_posts,LearningCommunities,2025-01-19,,1
+daily_posts,LearningCommunities,2025-01-15,,2
+daily_posts,LearningCommunities,2025-01-08,,2
+daily_posts,LearningCommunities,2025-01-01,,1
+daily_posts,LearningCommunities,2024-12-31,,2
+daily_posts,LearningCommunities,2024-12-21,,1
+daily_posts,LearningCommunities,2024-12-20,,1
+daily_posts,LearningCommunities,2024-12-19,,1
+daily_posts,LearningCommunities,2024-12-15,,2
+daily_posts,LearningCommunities,2024-12-11,,1
+daily_posts,LearningCommunities,2024-12-09,,1
+daily_posts,LearningCommunities,2024-11-30,,1
+daily_posts,LearningCommunities,2024-11-24,,1
+daily_posts,CognitiveScience,2025-07-30,,1
+daily_posts,CognitiveScience,2025-07-29,,3
+daily_posts,CognitiveScience,2025-07-28,,6
+daily_posts,CognitiveScience,2025-07-27,,2
+daily_posts,CognitiveScience,2025-07-26,,2
+daily_posts,CognitiveScience,2025-07-25,,3
+daily_posts,CognitiveScience,2025-07-24,,2
+daily_posts,CognitiveScience,2025-07-23,,2
+daily_posts,CognitiveScience,2025-07-22,,1
+daily_posts,CognitiveScience,2025-07-21,,4
+daily_posts,CognitiveScience,2025-07-19,,1
+daily_posts,CognitiveScience,2025-07-18,,5
+daily_posts,CognitiveScience,2025-07-17,,2
+daily_posts,CognitiveScience,2025-07-16,,3
+daily_posts,CognitiveScience,2025-07-15,,4
+daily_posts,CognitiveScience,2025-07-14,,1
+daily_posts,CognitiveScience,2025-07-13,,1
+daily_posts,CognitiveScience,2025-07-12,,1
+daily_posts,CognitiveScience,2025-07-11,,2
+daily_posts,CognitiveScience,2025-07-10,,3
+daily_posts,CognitiveScience,2025-07-09,,4
+daily_posts,CognitiveScience,2025-07-08,,4
+daily_posts,CognitiveScience,2025-07-07,,2
+daily_posts,CognitiveScience,2025-07-06,,3
+daily_posts,CognitiveScience,2025-07-05,,5
+daily_posts,CognitiveScience,2025-07-03,,5
+daily_posts,CognitiveScience,2025-07-02,,3
+daily_posts,CognitiveScience,2025-07-01,,4
+daily_posts,CognitiveScience,2025-06-30,,3
+daily_posts,CognitiveScience,2025-06-29,,2
+daily_posts,CognitiveScience,2025-06-28,,2
+daily_posts,CognitiveScience,2025-06-27,,3
+daily_posts,CognitiveScience,2025-06-26,,4
+daily_posts,CognitiveScience,2025-06-25,,2
+daily_posts,CognitiveScience,2025-06-24,,2
+daily_posts,CognitiveScience,2025-06-23,,1
+daily_posts,CognitiveScience,2025-06-21,,2
+daily_posts,HowWeLearn,2025-07-21,,1
+daily_posts,HowWeLearn,2025-06-12,,1
+daily_posts,HowWeLearn,2025-05-30,,2
+daily_posts,HowWeLearn,2025-05-29,,1
+daily_posts,AIinEducation,2025-07-30,,3
+daily_posts,AIinEducation,2025-07-29,,1
+daily_posts,AIinEducation,2025-07-28,,12
+daily_posts,AIinEducation,2025-07-27,,7
+daily_posts,AIinEducation,2025-07-26,,5
+daily_posts,AIinEducation,2025-07-25,,5
+daily_posts,AIinEducation,2025-07-24,,5
+daily_posts,AIinEducation,2025-07-23,,15
+daily_posts,AIinEducation,2025-07-22,,19
+daily_posts,AIinEducation,2025-07-21,,11
+daily_posts,LearningAnalytics,2025-07-29,,1
+daily_posts,LearningAnalytics,2025-07-28,,1
+daily_posts,LearningAnalytics,2025-07-22,,1
+daily_posts,LearningAnalytics,2025-07-20,,1
+daily_posts,LearningAnalytics,2025-07-18,,1
+daily_posts,LearningAnalytics,2025-06-20,,1
+daily_posts,LearningAnalytics,2025-06-13,,2
+daily_posts,LearningAnalytics,2025-06-11,,1
+daily_posts,LearningAnalytics,2025-06-10,,1
+daily_posts,LearningAnalytics,2025-06-05,,1
+daily_posts,LearningAnalytics,2025-05-29,,2
+daily_posts,LearningAnalytics,2025-05-23,,1
+daily_posts,LearningAnalytics,2025-05-20,,1
+daily_posts,LearningAnalytics,2025-05-16,,1
+daily_posts,LearningAnalytics,2025-04-26,,1
+daily_posts,LearningAnalytics,2025-04-25,,1
+daily_posts,LearningAnalytics,2025-03-25,,1
+daily_posts,LearningAnalytics,2025-03-05,,1
+daily_posts,LearningAnalytics,2025-03-04,,2
+daily_posts,LearningAnalytics,2025-03-03,,3
+daily_posts,LearningAnalytics,2025-02-21,,1
+daily_posts,LearningAnalytics,2025-02-12,,1
+daily_posts,LearningAnalytics,2025-01-26,,1
+daily_posts,LearningAnalytics,2025-01-24,,1
+daily_posts,LearningAnalytics,2025-01-11,,1
+daily_posts,LearningAnalytics,2025-01-10,,1
+daily_posts,LearningAnalytics,2025-01-08,,1
+daily_posts,LearningAnalytics,2024-12-20,,1
+daily_posts,LearningAnalytics,2024-12-14,,1
+daily_posts,LearningAnalytics,2024-12-11,,1
+daily_posts,LearningAnalytics,2024-12-07,,1
+daily_posts,LearningAnalytics,2024-12-01,,1
+daily_posts,LearningAnalytics,2024-11-30,,1
+daily_posts,LearningAnalytics,2024-11-29,,1
+daily_posts,LearningAnalytics,2024-11-27,,1
+daily_posts,LearningAnalytics,2024-11-25,,1
+daily_posts,LearningAnalytics,2024-11-22,,1
+daily_posts,LearningAnalytics,2024-11-17,,1
+daily_posts,LearningAnalytics,2024-09-02,,1
+daily_posts,LearningAnalytics,2024-07-26,,1
+daily_posts,LearningAnalytics,2024-07-08,,1
+daily_posts,LearningAnalytics,2024-05-15,,1
+daily_posts,LearningAnalytics,2024-03-11,,2
+daily_posts,LearningAnalytics,2024-03-08,,1
+daily_posts,LearningAnalytics,2024-01-16,,1
+daily_posts,LearningAnalytics,2024-01-09,,1
+daily_posts,LearningAnalytics,2023-12-01,,1
+daily_posts,LearningAnalytics,2023-11-23,,1
+daily_posts,LearningAnalytics,2023-11-21,,1
+daily_posts,LearningAnalytics,2023-11-20,,1
+daily_posts,LearningAnalytics,2023-11-13,,1
+daily_posts,LearningAnalytics,2023-10-20,,1
+daily_posts,LearningAnalytics,2023-10-17,,1
+daily_posts,LearningAnalytics,2023-05-31,,1
+daily_posts,LearningAnalytics,2023-04-04,,1
+daily_posts,LearningAnalytics,2023-03-06,,2
+daily_posts,LearningAnalytics,2023-02-22,,2
+daily_posts,LearningAnalytics,2023-02-09,,2
+daily_posts,LearningAnalytics,2022-07-27,,1
+daily_posts,LearningAnalytics,2021-12-17,,1
+daily_posts,LearningAnalytics,2021-09-13,,2
+daily_posts,LearningAnalytics,2021-04-20,,1
+daily_posts,LearningAnalytics,2021-04-12,,2
+daily_posts,LearningAnalytics,2021-01-04,,1
+daily_posts,LearningAnalytics,2020-12-31,,1
+daily_posts,LearningAnalytics,2020-12-18,,1
+daily_posts,LearningAnalytics,2020-11-11,,2
+daily_posts,LearningAnalytics,2020-10-22,,1
+daily_posts,LearningAnalytics,2020-10-09,,1
+daily_posts,LearningAnalytics,2020-07-28,,1
+daily_posts,LearningAnalytics,2020-03-20,,1
+daily_posts,LearningAnalytics,2020-03-19,,1
+daily_posts,LearningAnalytics,2020-01-21,,1
+daily_posts,LearningAnalytics,2020-01-20,,1
+daily_posts,LearningAnalytics,2020-01-10,,1
+daily_posts,LearningAnalytics,2019-12-06,,2
+daily_posts,LearningAnalytics,2019-10-01,,1
+daily_posts,LearningAnalytics,2019-09-20,,1
+daily_posts,LearningAnalytics,2019-09-10,,1
+daily_posts,LearningAnalytics,2018-11-26,,1
+daily_posts,LearningAnalytics,2018-11-23,,1
+daily_posts,LearningAnalytics,2018-11-22,,1
+daily_posts,LearningAnalytics,2018-11-13,,1
+daily_posts,LearningAnalytics,2018-11-08,,1
+daily_posts,LearningAnalytics,2018-10-11,,1
+daily_posts,LearningAnalytics,2018-08-31,,1
+daily_posts,Metacognition,2025-07-22,,1
+daily_posts,Metacognition,2025-07-21,,2
+daily_posts,Metacognition,2025-07-20,,1
+daily_posts,Metacognition,2025-07-16,,2
+daily_posts,Metacognition,2025-07-09,,1
+daily_posts,Metacognition,2025-07-08,,1
+daily_posts,Metacognition,2025-07-06,,1
+daily_posts,Metacognition,2025-07-05,,2
+daily_posts,Metacognition,2025-07-04,,4
+daily_posts,Metacognition,2025-07-03,,2
+daily_posts,Metacognition,2025-07-02,,2
+daily_posts,Metacognition,2025-07-01,,2
+daily_posts,Metacognition,2025-06-30,,1
+daily_posts,Metacognition,2025-06-29,,1
+daily_posts,Metacognition,2025-06-28,,3
+daily_posts,Metacognition,2025-06-27,,2
+daily_posts,Metacognition,2025-06-25,,1
+daily_posts,Metacognition,2025-06-24,,1
+daily_posts,Metacognition,2025-06-21,,1
+daily_posts,Metacognition,2025-06-20,,3
+daily_posts,Metacognition,2025-06-19,,2
+daily_posts,Metacognition,2025-06-18,,1
+daily_posts,Metacognition,2025-06-17,,1
+daily_posts,Metacognition,2025-06-16,,1
+daily_posts,Metacognition,2025-06-14,,1
+daily_posts,Metacognition,2025-06-12,,1
+daily_posts,Metacognition,2025-06-11,,1
+daily_posts,Metacognition,2025-06-10,,2
+daily_posts,Metacognition,2025-06-06,,3
+daily_posts,Metacognition,2025-06-05,,1
+daily_posts,Metacognition,2025-06-03,,3
+daily_posts,Metacognition,2025-05-31,,1
+daily_posts,Metacognition,2025-05-25,,1
+daily_posts,Metacognition,2025-05-22,,1
+daily_posts,Metacognition,2025-05-19,,1
+daily_posts,Metacognition,2025-05-18,,1
+daily_posts,Metacognition,2025-05-17,,1
+daily_posts,Metacognition,2025-05-15,,1
+daily_posts,Metacognition,2025-05-14,,3
+daily_posts,Metacognition,2025-05-13,,1
+daily_posts,Metacognition,2025-05-12,,1
+daily_posts,Metacognition,2025-05-11,,2
+daily_posts,Metacognition,2025-05-09,,1
+daily_posts,Metacognition,2025-05-08,,1
+daily_posts,Metacognition,2025-05-07,,1
+daily_posts,Metacognition,2025-05-02,,1
+daily_posts,Metacognition,2025-05-01,,2
+daily_posts,Metacognition,2025-04-30,,2
+daily_posts,Metacognition,2025-04-29,,1
+daily_posts,Metacognition,2025-04-28,,1
+daily_posts,Metacognition,2025-04-24,,2
+daily_posts,Metacognition,2025-04-23,,2
+daily_posts,Metacognition,2025-04-22,,1
+daily_posts,Metacognition,2025-04-21,,3
+daily_posts,Metacognition,2025-04-20,,2
+daily_posts,Metacognition,2025-04-19,,1
+daily_posts,Metacognition,2025-04-17,,1
+daily_posts,Metacognition,2025-04-16,,2
+daily_posts,Metacognition,2025-04-15,,1
+daily_posts,Metacognition,2025-04-14,,1
+daily_posts,Metacognition,2025-04-11,,1
+daily_posts,Metacognition,2025-04-06,,2
+daily_posts,Metacognition,2025-04-03,,3
+daily_posts,Metacognition,2025-03-30,,1
+daily_posts,Web3Education,2025-06-16,,1
+daily_posts,Web3Education,2025-06-08,,1
+daily_posts,Web3Education,2025-05-24,,1
+daily_posts,Web3Education,2025-05-18,,1
+daily_posts,Web3Education,2025-05-14,,1
+daily_posts,Web3Education,2025-05-13,,1
+daily_posts,Web3Education,2025-05-12,,2
+daily_posts,Web3Education,2025-04-17,,1
+daily_posts,Web3Education,2025-03-10,,2
+daily_posts,Web3Education,2024-12-25,,1
+daily_posts,Web3Education,2024-12-11,,1
+daily_posts,Web3Education,2024-12-10,,1
+daily_posts,Web3Education,2024-12-09,,2
+daily_posts,Web3Education,2024-11-30,,1
+daily_posts,Web3Education,2024-11-27,,1
+daily_posts,Web3Education,2024-11-24,,1
+daily_posts,Web3Education,2024-09-12,,1
+daily_posts,Web3Education,2024-07-23,,1
+daily_posts,Web3Education,2024-04-17,,1
+daily_posts,Web3Education,2024-03-21,,2
+daily_posts,Web3Education,2024-03-20,,6
+daily_posts,Web3Education,2023-12-22,,1
+daily_posts,DecentralizedLearning,2025-03-22,,1
+daily_posts,SemanticWeb,2025-07-26,,1
+daily_posts,SemanticWeb,2025-07-22,,1
+daily_posts,SemanticWeb,2025-07-21,,2
+daily_posts,SemanticWeb,2025-07-18,,2
+daily_posts,SemanticWeb,2025-07-09,,1
+daily_posts,SemanticWeb,2025-07-08,,1
+daily_posts,SemanticWeb,2025-07-07,,1
+daily_posts,SemanticWeb,2025-07-06,,1
+daily_posts,SemanticWeb,2025-07-04,,1
+daily_posts,SemanticWeb,2025-07-02,,2
+daily_posts,SemanticWeb,2025-07-01,,2
+daily_posts,SemanticWeb,2025-06-30,,2
+daily_posts,SemanticWeb,2025-06-23,,1
+daily_posts,SemanticWeb,2025-06-13,,2
+daily_posts,SemanticWeb,2025-06-12,,1
+daily_posts,SemanticWeb,2025-06-11,,2
+daily_posts,SemanticWeb,2025-06-10,,2
+daily_posts,SemanticWeb,2025-06-06,,1
+daily_posts,SemanticWeb,2025-06-05,,2
+daily_posts,SemanticWeb,2025-06-04,,1
+daily_posts,SemanticWeb,2025-06-02,,2
+daily_posts,SemanticWeb,2025-06-01,,1
+daily_posts,SemanticWeb,2025-05-31,,2
+daily_posts,SemanticWeb,2025-05-30,,1
+daily_posts,SemanticWeb,2025-05-29,,4
+daily_posts,SemanticWeb,2025-05-28,,1
+daily_posts,SemanticWeb,2025-05-26,,1
+daily_posts,SemanticWeb,2025-05-21,,2
+daily_posts,SemanticWeb,2025-05-20,,2
+daily_posts,SemanticWeb,2025-05-15,,2
+daily_posts,SemanticWeb,2025-05-14,,1
+daily_posts,SemanticWeb,2025-05-13,,1
+daily_posts,SemanticWeb,2025-05-09,,1
+daily_posts,SemanticWeb,2025-05-08,,4
+daily_posts,SemanticWeb,2025-05-07,,1
+daily_posts,SemanticWeb,2025-05-06,,1
+daily_posts,SemanticWeb,2025-05-05,,2
+daily_posts,SemanticWeb,2025-05-04,,2
+daily_posts,SemanticWeb,2025-05-01,,1
+daily_posts,SemanticWeb,2025-04-30,,1
+daily_posts,SemanticWeb,2025-04-29,,1
+daily_posts,SemanticWeb,2025-04-27,,1
+daily_posts,SemanticWeb,2025-04-26,,1
+daily_posts,SemanticWeb,2025-04-25,,1
+daily_posts,SemanticWeb,2025-04-23,,2
+daily_posts,SemanticWeb,2025-04-22,,1
+daily_posts,SemanticWeb,2025-04-16,,1
+daily_posts,SemanticWeb,2025-04-13,,2
+daily_posts,SemanticWeb,2025-04-12,,1
+daily_posts,SemanticWeb,2025-04-11,,1
+daily_posts,SemanticWeb,2025-04-10,,2
+daily_posts,SemanticWeb,2025-04-08,,1
+daily_posts,SemanticWeb,2025-04-05,,1
+daily_posts,SemanticWeb,2025-04-03,,1
+daily_posts,SemanticWeb,2025-04-01,,2
+daily_posts,SemanticWeb,2025-03-26,,1
+daily_posts,SemanticWeb,2025-03-25,,2
+daily_posts,SemanticWeb,2025-03-24,,1
+daily_posts,SemanticWeb,2025-03-23,,1
+daily_posts,SemanticWeb,2025-03-20,,1
+daily_posts,SemanticWeb,2025-03-19,,1
+daily_posts,SemanticWeb,2025-03-15,,1
+daily_posts,SemanticWeb,2025-03-14,,3
+daily_posts,SemanticWeb,2025-03-13,,2
+daily_posts,BlueskySocial,2025-07-30,,1
+daily_posts,BlueskySocial,2025-07-29,,4
+daily_posts,BlueskySocial,2025-07-28,,2
+daily_posts,BlueskySocial,2025-07-27,,2
+daily_posts,BlueskySocial,2025-07-26,,1
+daily_posts,BlueskySocial,2025-07-25,,2
+daily_posts,BlueskySocial,2025-07-24,,5
+daily_posts,BlueskySocial,2025-07-23,,3
+daily_posts,BlueskySocial,2025-07-22,,5
+daily_posts,BlueskySocial,2025-07-21,,2
+daily_posts,BlueskySocial,2025-07-20,,5
+daily_posts,BlueskySocial,2025-07-19,,4
+daily_posts,BlueskySocial,2025-07-18,,4
+daily_posts,BlueskySocial,2025-07-17,,2
+daily_posts,BlueskySocial,2025-07-16,,4
+daily_posts,BlueskySocial,2025-07-15,,7
+daily_posts,BlueskySocial,2025-07-14,,2
+daily_posts,BlueskySocial,2025-07-13,,1
+daily_posts,BlueskySocial,2025-07-12,,2
+daily_posts,BlueskySocial,2025-07-11,,4
+daily_posts,BlueskySocial,2025-07-10,,5
+daily_posts,BlueskySocial,2025-07-09,,4
+daily_posts,BlueskySocial,2025-07-08,,1
+daily_posts,BlueskySocial,2025-07-07,,4
+daily_posts,BlueskySocial,2025-07-05,,2
+daily_posts,BlueskySocial,2025-07-04,,3
+daily_posts,BlueskySocial,2025-07-03,,5
+top_poster_activity,EdTech,,Education Technology News,23
+top_poster_activity,EdTech,,DavidPBLRoss,7
+top_poster_activity,EdTech,,Rene Corbeil,7
+top_poster_activity,EdTech,,Kasey Bell,5
+top_poster_activity,EdTech,,Pure Tech,3
+top_poster_activity,OpenEducation,,OEGlobal,48
+top_poster_activity,OpenEducation,,SPARC,9
+top_poster_activity,OpenEducation,,OERcamp,9
+top_poster_activity,OpenEducation,,Ash Barber (she/her),3
+top_poster_activity,OpenEducation,,LibreTexts,2
+top_poster_activity,FutureOfEducation,,Judy Keller,4
+top_poster_activity,FutureOfEducation,,Wulfy,3
+top_poster_activity,FutureOfEducation,,besteducation.bsky.social,2
+top_poster_activity,FutureOfEducation,,Katie Moran ✈️ ISTE,2
+top_poster_activity,FutureOfEducation,,Tech AI & Beyond,2
+top_poster_activity,PersonalizedLearning,,KnowledgeWorks,6
+top_poster_activity,PersonalizedLearning,,Amilak Training Center,5
+top_poster_activity,PersonalizedLearning,,Citizen Portal News Pennsylvania,5
+top_poster_activity,PersonalizedLearning,,Tutree Education,5
+top_poster_activity,PersonalizedLearning,,Citizen Portal News Michigan,4
+top_poster_activity,LifelongLearning,,Daily facts,39
+top_poster_activity,LifelongLearning,,Josh Cole,4
+top_poster_activity,LifelongLearning,,Redwood Performance Group,3
+top_poster_activity,LifelongLearning,,Ekimellnea,2
+top_poster_activity,LifelongLearning,,Knolinfos,2
+top_poster_activity,KnowledgeGraph,,Neo4j ,18
+top_poster_activity,KnowledgeGraph,,Wp-dd.com: WordPress Design and Development,14
+top_poster_activity,KnowledgeGraph,,metaphacts,6
+top_poster_activity,KnowledgeGraph,,Linghua Jin,6
+top_poster_activity,KnowledgeGraph,,Alexander Erdl,4
+top_poster_activity,PeerLearning,,Adrian Segar,5
+top_poster_activity,PeerLearning,,Simon Dückert,5
+top_poster_activity,PeerLearning,,Peer 2 Peer University,3
+top_poster_activity,PeerLearning,,Edutopia,2
+top_poster_activity,PeerLearning,,Thomas Jenewein,2
+top_poster_activity,MentorshipMatters,,iCouldBe.org,11
+top_poster_activity,MentorshipMatters,,MentorCity,9
+top_poster_activity,MentorshipMatters,,"A Few Good MENtors, Inc",4
+top_poster_activity,MentorshipMatters,,amwadoctors.bsky.social,3
+top_poster_activity,MentorshipMatters,,Cochrane_US,3
+top_poster_activity,LearningCommunities,,Progressive Education,13
+top_poster_activity,LearningCommunities,,Daily 27,2
+top_poster_activity,LearningCommunities,,Ways to Wellness,2
+top_poster_activity,LearningCommunities,,HuddleUpLearning.com,2
+top_poster_activity,LearningCommunities,,Niall Gavin,1
+top_poster_activity,CognitiveScience,,Bri the Dog Guy,13
+top_poster_activity,CognitiveScience,,cito-greenhouse.bsky.social,10
+top_poster_activity,CognitiveScience,,Pure Science,4
+top_poster_activity,CognitiveScience,,The Dissenter,3
+top_poster_activity,CognitiveScience,,BrainHack Donostia,3
+top_poster_activity,HowWeLearn,,Next Generation Learning Challenges,1
+top_poster_activity,HowWeLearn,,Oriel High School,1
+top_poster_activity,HowWeLearn,,Awakari,1
+top_poster_activity,HowWeLearn,,LLMs,1
+top_poster_activity,HowWeLearn,,Essex and Thames SCITT Teacher Training,1
+top_poster_activity,AIinEducation,,DavidPBLRoss,28
+top_poster_activity,AIinEducation,,Kasey Bell,15
+top_poster_activity,AIinEducation,,Chartered College of Teaching,5
+top_poster_activity,AIinEducation,,Chris Davis,4
+top_poster_activity,AIinEducation,,Thamir Aljobori,2
+top_poster_activity,LearningAnalytics,,sjgknight,24
+top_poster_activity,LearningAnalytics,,Rob L,6
+top_poster_activity,LearningAnalytics,,ladlacademy.bsky.social,6
+top_poster_activity,LearningAnalytics,,il-di.bsky.social,5
+top_poster_activity,LearningAnalytics,,Watershed,4
+top_poster_activity,Metacognition,,Thinking Matters,11
+top_poster_activity,Metacognition,,Brian Kurilla,10
+top_poster_activity,Metacognition,,Edutopia,9
+top_poster_activity,Metacognition,,Infinite Nuance,6
+top_poster_activity,Metacognition,,Latitude77,5
+top_poster_activity,Web3Education,,Web3 Wiz Kids,8
+top_poster_activity,Web3Education,,Michael J Burgess,6
+top_poster_activity,Web3Education,,Bebop,5
+top_poster_activity,Web3Education,,OmniSocial,2
+top_poster_activity,Web3Education,,Decentralist.com |.eth |.lens,2
+top_poster_activity,DecentralizedLearning,,Heidi Cuppari,1
+top_poster_activity,SemanticWeb,,SEMANTiCS Conference,19
+top_poster_activity,SemanticWeb,,International Semantic Web Conference,12
+top_poster_activity,SemanticWeb,,Disease Ontology (DO),5
+top_poster_activity,SemanticWeb,,Digital History Berlin,4
+top_poster_activity,SemanticWeb,,Federico Pianzola,3
+top_poster_activity,BlueskySocial,,HumorousZ,10
+top_poster_activity,BlueskySocial,,Gonza 📸,7
+top_poster_activity,BlueskySocial,,Craig Morrison,5
+top_poster_activity,BlueskySocial,,Lexi Baby,3
+top_poster_activity,BlueskySocial,,"Dr. Marya Wright, LCSW",3
+top_poster_engagement,EdTech,,DavidPBLRoss,14
+top_poster_engagement,EdTech,,adriennecaptain.bsky.social,5
+top_poster_engagement,EdTech,,Book Creator Team,5
+top_poster_engagement,EdTech,,"Jen Roberts, NBCT",4
+top_poster_engagement,EdTech,,ITEC Iowa,4
+top_poster_engagement,OpenEducation,,OEGlobal,19
+top_poster_engagement,OpenEducation,,SPARC,19
+top_poster_engagement,OpenEducation,,Rajiv Jhangiani ,15
+top_poster_engagement,OpenEducation,,OERcamp,12
+top_poster_engagement,OpenEducation,,Karen Cangialosi,8
+top_poster_engagement,FutureOfEducation,,IÉSEG,5
+top_poster_engagement,FutureOfEducation,,Vaclav Brezina,4
+top_poster_engagement,FutureOfEducation,,Wulfy,4
+top_poster_engagement,FutureOfEducation,,Katie Moran ✈️ ISTE,3
+top_poster_engagement,FutureOfEducation,,Zahid Joney,2
+top_poster_engagement,PersonalizedLearning,,JR DeLaney,4
+top_poster_engagement,PersonalizedLearning,,InterspectAI,2
+top_poster_engagement,PersonalizedLearning,,Edstutia,2
+top_poster_engagement,PersonalizedLearning,,abhiksi.bsky.social,2
+top_poster_engagement,PersonalizedLearning,,AZoAI,2
+top_poster_engagement,LifelongLearning,,Dr Elsje van Bergen,10
+top_poster_engagement,LifelongLearning,,Knolinfos,5
+top_poster_engagement,LifelongLearning,,collasconf.bsky.social,5
+top_poster_engagement,LifelongLearning,,Daily facts,3
+top_poster_engagement,LifelongLearning,,"Doug Richmond, PhD",3
+top_poster_engagement,KnowledgeGraph,,Linghua Jin,41
+top_poster_engagement,KnowledgeGraph,,Neo4j ,20
+top_poster_engagement,KnowledgeGraph,,Andreea Iana,11
+top_poster_engagement,KnowledgeGraph,,Matthias Flotho,10
+top_poster_engagement,KnowledgeGraph,,The Knowledge Graph Conference,10
+top_poster_engagement,PeerLearning,,Irish Health Libraries,10
+top_poster_engagement,PeerLearning,,Peer 2 Peer University,5
+top_poster_engagement,PeerLearning,,dagrund.bsky.social,4
+top_poster_engagement,PeerLearning,,Simon Dückert,3
+top_poster_engagement,PeerLearning,,Edutopia,3
+top_poster_engagement,MentorshipMatters,,Omar Morales,12
+top_poster_engagement,MentorshipMatters,,Cochrane_US,9
+top_poster_engagement,MentorshipMatters,,APSA,7
+top_poster_engagement,MentorshipMatters,,Jon Mechan,5
+top_poster_engagement,MentorshipMatters,,iCouldBe.org,4
+top_poster_engagement,LearningCommunities,,Progressive Education,30
+top_poster_engagement,LearningCommunities,,Lawrence (Larry) Mróz,14
+top_poster_engagement,LearningCommunities,,Ways to Wellness,5
+top_poster_engagement,LearningCommunities,,Derek,5
+top_poster_engagement,LearningCommunities,,Niall Gavin,4
+top_poster_engagement,CognitiveScience,,Andrea Sommese,59
+top_poster_engagement,CognitiveScience,,Martin Kusch,44
+top_poster_engagement,CognitiveScience,,The Dissenter,11
+top_poster_engagement,CognitiveScience,,Cognitive Science Society,11
+top_poster_engagement,CognitiveScience,,Primatology.net,10
+top_poster_engagement,HowWeLearn,,Essex and Thames SCITT Teacher Training,2
+top_poster_engagement,HowWeLearn,,Next Generation Learning Challenges,0
+top_poster_engagement,HowWeLearn,,Oriel High School,0
+top_poster_engagement,HowWeLearn,,Awakari,0
+top_poster_engagement,HowWeLearn,,LLMs,0
+top_poster_engagement,AIinEducation,,DavidPBLRoss,82
+top_poster_engagement,AIinEducation,,Kasey Bell,9
+top_poster_engagement,AIinEducation,,Chartered College of Teaching,8
+top_poster_engagement,AIinEducation,,Ryan Hoxie,5
+top_poster_engagement,AIinEducation,,Eric Ma,4
+top_poster_engagement,LearningAnalytics,,Rob L,14
+top_poster_engagement,LearningAnalytics,,Iris Neiske,11
+top_poster_engagement,LearningAnalytics,,Catherine Manly,8
+top_poster_engagement,LearningAnalytics,,KI-Campus,7
+top_poster_engagement,LearningAnalytics,,Australasian Journal of Educational Technology,7
+top_poster_engagement,Metacognition,,Edutopia,102
+top_poster_engagement,Metacognition,,"Allen Tien, MD, MHS mdlogix.com 94,698",22
+top_poster_engagement,Metacognition,,Infinite Nuance,16
+top_poster_engagement,Metacognition,,EthicsGame,9
+top_poster_engagement,Metacognition,,"Andrea Trudeau, Ph.D.",9
+top_poster_engagement,Web3Education,,Decentralist.com |.eth |.lens,8
+top_poster_engagement,Web3Education,,Michael J Burgess,7
+top_poster_engagement,Web3Education,,Web3 Wiz Kids,4
+top_poster_engagement,Web3Education,,Geek Metaverse ,3
+top_poster_engagement,Web3Education,,OmniSocial,2
+top_poster_engagement,DecentralizedLearning,,Heidi Cuppari,0
+top_poster_engagement,SemanticWeb,,SEMANTiCS Conference,41
+top_poster_engagement,SemanticWeb,,International Semantic Web Conference,32
+top_poster_engagement,SemanticWeb,,Federico Pianzola,21
+top_poster_engagement,SemanticWeb,,Pascal Hitzler,16
+top_poster_engagement,SemanticWeb,,International Semantic Web Research Summer School,16
+top_poster_engagement,BlueskySocial,,HumorousZ,58
+top_poster_engagement,BlueskySocial,,Craig Morrison,52
+top_poster_engagement,BlueskySocial,,sophiakramerart,40
+top_poster_engagement,BlueskySocial,,Gonza 📸,39
+top_poster_engagement,BlueskySocial,,Patrick Chuprina,33

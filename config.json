@@ -1,0 +1,21 @@
+{
+  "reddit_status_colors": {
+    "No Content": "#FFFFE0",
+    "Private": "#ADD8E6",
+    "Banned": "#FFA07A",
+    "Non-existent": "#D3D3D3",
+    "Exists": "#90EE90"
+  },
+  "subreddit_status": {
+    "PersonalizedLearning": "Non-existent",
+    "KnowledgeMapping": "Non-existent",
+    "MentorshipMatters": "Non-existent",
+    "LearningCommunities": "Non-existent",
+    "HowWeLearn": "Non-existent",
+    "PeerLearning": "Private",
+    "FutureOfEducation": "Banned",
+    "Web3Education": "No Content",
+    "OpenEducation": "No Content",
+    "LearnGraph": "No Content"
+  }
+}

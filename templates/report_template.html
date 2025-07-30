@@ -53,26 +53,136 @@
     .copy-btn:hover {
       background-color: #d0d0d0;
     }
+    tbody tr:nth-child(odd) {
+      background-color: #f9f9f9; /* Light gray */
+    }
+    tbody tr:nth-child(even) {
+      background-color: #ffffff; /* White */
+    }
+    .color-key {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #eee;
+      background-color: #fdfdfd;
+      border-radius: 5px;
+    }
+    .color-key h3 {
+      margin-top: 0;
+      font-size: 1.1em;
+      color: #333;
+    }
+    .color-scale {
+      display: flex;
+      height: 20px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .color-box {
+      flex-grow: 1;
+    }
+    .color-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8em;
+      color: #555;
+      margin-top: 5px;
+    }
+    .valid-subreddit {
+      background-color: #e6ffe6; /* Light green for valid subreddits */
+    }
+    /* Color scale for hashtag hotness */
+    .hotness-0 { background-color: #ADD8E6; } /* Low */
+    .hotness-1 { background-color: #FFFF00; } /* Medium */
+    .hotness-2 { background-color: #FFA500; } /* High */
+    .hotness-3 { background-color: #FF0000; } /* Very High */
+    #search-links {
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
   <h1>Hashtag Links</h1>
+  <p>Explore these hashtags on Reddit: <a href="https://old.reddit.com/user/yoshemitzu/m/learngraph/top/?sort=top&t=all" target="_blank">r/learngraph multireddit</a></p>
+  
+  <div id="search-links"></div>
+
+  <div class="color-key">
+    <h3>Bluesky Hotness Key (Daily Posts)</h3>
+    <div class="color-scale">
+      <span class="color-box hotness-0"></span>
+      <span class="color-box hotness-1"></span>
+      <span class="color-box hotness-2"></span>
+      <span class="color-box hotness-3"></span>
+    </div>
+    <div class="color-labels">
+      <span>Low</span>
+      <span>Medium</span>
+      <span>High</span>
+      <span>Very High</span>
+    </div>
+  </div>
+  <div class="color-key">
+    <h3>YouTube Hotness Key (Total Views)</h3>
+    <div class="color-scale">
+      <span class="color-box hotness-0"></span>
+      <span class="color-box hotness-1"></span>
+      <span class="color-box hotness-2"></span>
+      <span class="color-box hotness-3"></span>
+    </div>
+    <div class="color-labels">
+      <span>Low</span>
+      <span>Medium</span>
+      <span>High</span>
+      <span>Very High</span>
+    </div>
+  </div>
+  <div class="color-key">
+    <h3>Reddit Subreddit Status</h3>
+    {% for status, color in reddit_status_colors.items() %}
+    <span style="background-color: {{ color }}; padding: 2px 8px; border-radius: 3px; margin-right: 10px;">{{ status }}</span>
+    {% endfor %}
+  </div>
   <div id="hashtag-table">
     <input type="text" class="search" placeholder="Search table" />
     <table>
       <thead>
         <tr>
           {% for header in headers %}
-          <th class="sort" data-sort="{{ header | replace(' 🔗', '') | replace(' ', '') }}">{{ header }}</th>
+          <th class="sort" data-sort="{{ header | replace(' 🔗', '') | replace(' ', '') }}">
+            {% if loop.index0 != 0 %}
+            <input type="checkbox" class="header-checkbox" data-platform="{{ header | replace(' 🔗', '') }}">
+            {% endif %}
+            {{ header }}
+          </th>
           {% endfor %}
         </tr>
       </thead>
       <tbody class="list">
         {% for row in rows %}
         <tr>
-          <td class="{{ headers[0] | replace(' 🔗', '') | replace(' ', '') }}">{{ row[0] }} <button class="copy-btn" onclick="copyToClipboard('{{ row[0] | e }}')">Copy</button></td>
-          {% for cell in row[1:] %}
-          <td class="{{ headers[loop.index] | replace(' 🔗', '') | replace(' ', '') }}">{{ cell | safe }}</td>
+          {% for cell in row %}
+          {% set hashtag = row[0].replace('#', '') %}
+          {% set reddit_status = subreddit_status.get(hashtag, 'Exists') %}
+          <td class="{{ headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') }}{% if headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'Bluesky' %}{% if hotness_levels[hashtag] is defined %}
+ hotness-{{ hotness_levels[hashtag] }}{% endif %}{% elif headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'YouTube' %}{% if youtube_hotness_levels[hashtag] is defined %}
+ hotness-{{ youtube_hotness_levels[hashtag] }}{% endif %}{% endif %}" {% if headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'Reddit' %}style="background-color: {{ reddit_status_colors.get(reddit_status, '#FFFFFF') }};"{% endif %}>
+            {% if loop.index0 != 0 %}
+            <input type="checkbox" class="hashtag-checkbox" data-hashtag="{{ hashtag }}" data-platform="{{ headers[loop.index0] | replace(' 🔗', '') }}">
+            {% endif %}
+            {% if loop.index0 == 0 %}
+              {{ cell.replace('#', '') }}
+            {% elif headers[loop.index0] == 'YouTube' and youtube_analytics_data[hashtag] %}
+              <a href="{{ youtube_analytics_data[hashtag]['top_video_url'] }}" target="_blank">Top Video</a>
+              <br>
+              <small>Views: {{ youtube_analytics_data[hashtag]['total_views'] }} | Likes: {{ youtube_analytics_data[hashtag]['total_likes'] }} | Comments: {{ youtube_analytics_data[hashtag]['total_comments'] }}</small>
+            {% elif cell.startswith('http') %}
+              <a href="{{ cell }}" target="_blank">{{ headers[loop.index0] | replace(' 🔗', '') }}</a><span style="display:none;">{{ cell }}</span>
+            {% else %}
+              {{ cell }}
+            {% endif %}
+          </td>
           {% endfor %}
         </tr>
         {% endfor %}
@@ -81,22 +191,78 @@
   </div>
 
   <script>
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).then(function() {
-        console.log('Async: Copying to clipboard was successful!');
-      }, function(err) {
-        console.error('Async: Could not copy text: ', err);
-      }); 
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const checkboxes = document.querySelectorAll('.hashtag-checkbox');
+      const headerCheckboxes = document.querySelectorAll('.header-checkbox');
+      const searchLinksContainer = document.getElementById('search-links');
 
-    var options = {
-      valueNames: [
-        {% for header in headers %}
-        '{{ header | replace(' 🔗', '') | replace(' ', '') }}'{% if not loop.last %},{% endif %}
-        {% endfor %}
-      ]
-    };
-    var userList = new List('hashtag-table', options);
+      const baseUrls = {
+        'Instagram': 'https://www.instagram.com/explore/tags/',
+        'Reddit': 'https://old.reddit.com/r/',
+        'YouTube': 'https://www.youtube.com/results?search_query=',
+        'Bluesky': 'https://bsky.app/search?q=',
+        'Twitter/X': 'https://twitter.com/search?q='
+      };
+
+      function updateSearchLinks() {
+        const selectedHashtags = {};
+
+        checkboxes.forEach(checkbox => {
+          if (checkbox.checked) {
+            const platform = checkbox.dataset.platform;
+            const hashtag = checkbox.dataset.hashtag;
+
+            if (!selectedHashtags[platform]) {
+              selectedHashtags[platform] = [];
+            }
+            if (!selectedHashtags[platform].includes(hashtag)) {
+                selectedHashtags[platform].push(hashtag);
+            }
+          }
+        });
+
+        let linksHtml = '<h3>Combined Search Links:</h3>';
+        for (const platform in selectedHashtags) {
+          if (selectedHashtags.hasOwnProperty(platform)) {
+            const hashtags = selectedHashtags[platform];
+            let searchUrl = baseUrls[platform];
+
+            if (platform === 'Reddit') {
+              searchUrl += hashtags.join('+');
+            } else {
+              searchUrl += hashtags.map(h => `%23${h}`).join(' ');
+            }
+            
+            linksHtml += `<a href="${searchUrl}" target="_blank">Search ${platform}</a><br>`;
+          }
+        }
+        searchLinksContainer.innerHTML = linksHtml;
+      }
+
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateSearchLinks);
+      });
+
+      headerCheckboxes.forEach(headerCheckbox => {
+        headerCheckbox.addEventListener('change', function() {
+          const platform = this.dataset.platform;
+          const columnCheckboxes = document.querySelectorAll(`.hashtag-checkbox[data-platform="${platform}"]`);
+          columnCheckboxes.forEach(checkbox => {
+            checkbox.checked = this.checked;
+          });
+          updateSearchLinks();
+        });
+      });
+
+      var options = {
+        valueNames: [
+          {% for header in headers %}
+          '{{ header | replace(' 🔗', '') }}'{% if not loop.last %},{% endif %}
+          {% endfor %}
+        ]
+      };
+      var userList = new List('hashtag-table', options);
+    });
   </script>
 </body>
 </html>
