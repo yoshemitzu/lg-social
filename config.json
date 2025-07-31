@@ -19,7 +19,8 @@
     "Web3Education",
     "DecentralizedLearning",
     "SemanticWeb",
-    "BlueskySocial"
+    "BlueskySocial",
+    "teachers"
   ],
   "platform_url_templates": {
     "Instagram": "https://www.instagram.com/explore/tags/{}",

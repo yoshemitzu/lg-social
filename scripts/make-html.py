@@ -134,6 +134,10 @@ def load_config(config_path):
     with open(config_path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
+def format_hashtag_for_display(hashtag_raw):
+    """Formats a raw hashtag string for display (e.g., 'teachers' -> 'Teachers')."""
+    return hashtag_raw.title()
+
 def generate_html(headers, rows, out_path, analytics_data, max_daily_posts, hotness_levels, reddit_analytics_data, max_subscribers, youtube_analytics_data, youtube_hotness_levels, config):
     # Set up Jinja2 environment
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -167,7 +171,7 @@ def generate_report(args, config):
     headers = ['Hashtag'] + list(platform_url_templates.keys())
     rows = []
     for hashtag in hashtags:
-        row = [f'#{hashtag}']
+        row = [format_hashtag_for_display(hashtag)]
         for platform in platform_url_templates:
             url = platform_url_templates[platform].format(hashtag)
             row.append(url)
@@ -255,6 +259,10 @@ def main():
         default=0,
         help=argparse.SUPPRESS
     )
+    parser.add_argument(
+        "--hashtag",
+        help="Process only a specific hashtag when updating data."
+    )
     args = parser.parse_args()
 
     config = load_config(config_path)
@@ -262,7 +270,10 @@ def main():
     if args.update_data:
         print("Updating social data...")
         update_script_path = os.path.join(script_dir, 'update_social_data.py')
-        subprocess.run([sys.executable, update_script_path])
+        update_command = [sys.executable, update_script_path]
+        if args.hashtag:
+            update_command.extend(['--hashtag', args.hashtag])
+        subprocess.run(update_command)
 
     if args.watch:
         print(f"Watching {config_path} for changes... Press Ctrl+C to stop.")

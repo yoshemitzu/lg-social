@@ -8,7 +8,7 @@ This repository contains the social tagging and discovery infrastructure for Lea
 
 ## Hashtag Universe
 
-The following hashtags are being tracked across various social media platforms.
+The following hashtags are being tracked across various social media platforms. The primary list of hashtags is now managed in `config.json`.
 
 ### Core Education
 - #LearnGraph
@@ -52,7 +52,6 @@ The following hashtags are being tracked across various social media platforms.
   - Add CLI arguments for custom input/output filenames, auto-opening the HTML file, and specifying file format.
   - Add optional live-watching with `watchdog` to regenerate on file changes.
 - **HTML Improvements:**
-  - Add client-side sorting/filtering (e.g., via List.js or DataTables).
   - Add copy-to-clipboard buttons for hashtags.
   - Add inline export options (Markdown/CSV/JSON).
   - Improve accessibility and create a responsive layout (viewport, dark mode).
@@ -65,6 +64,7 @@ The following hashtags are being tracked across various social media platforms.
 - Implement auto-tag clustering (e.g., using cosine similarity on hashtag use).
 - Deploy a table explorer frontend (React/Next.js or SvelteKit).
 - Integrate with the LearnGraph project API or UI.
+- **New:** Implement a "pop out" detailed view for individual hashtags in the report.
 
 ### Long-Term Goals
 
@@ -82,10 +82,10 @@ The following hashtags are being tracked across various social media platforms.
 - [ ] Build a graph-style visual map of hashtags + people.
 - [x] Plan post types for social (commentary, repost, remix, ask-me-anything).
 - [ ] Develop content hooks for each thematic hashtag.
-- [ ] Finalize HTML rendering improvements.
+- [x] Finalize HTML rendering improvements (including performance and search/sort).
 - [ ] Begin prototyping a scraping routine for 2-3 platforms.
 - [ ] Create a basic CLI wrapper script for recurring analysis.
-- [ ] Organize vault/codebase into a unified structure.
+- [x] Organize vault/codebase into a unified structure (centralized hashtags, main.py, reports/ directory, individual hashtag processing).
 - [ ] Scrape metadata for top 50 hashtags on each platform.
 - [ ] Build influencer detection (threshold-based or clustering).
 - [ ] Auto-tag clustering (cosine similarity on hashtag use).

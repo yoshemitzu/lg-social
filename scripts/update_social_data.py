@@ -4,6 +4,7 @@ import os
 import subprocess
 import sys
 import json
+import argparse
 from collections import defaultdict
 from datetime import datetime
 
@@ -218,7 +219,76 @@ def write_analytics_to_csv(data, output_csv_path):
     except Exception as e:
         print(f"[ERROR] Error writing analytics CSV: {e}")
 
+def process_single_hashtag(entry, script_dir, project_root, existing_uris, existing_youtube_hashtags, output_scraped_csv_path, output_reddit_analytics_csv_path, output_youtube_analytics_csv_path):
+    hashtag = entry['hashtag']
+    platforms = entry['platforms']
+    new_posts_found_for_hashtag = False
+    all_new_posts_for_hashtag = []
+
+    if 'Bluesky' in platforms and platforms['Bluesky']:
+        bluesky_scraper_path = os.path.join(script_dir, 'bluesky_scraper.py')
+        scraped_posts = run_scraper(bluesky_scraper_path, [hashtag, '--limit', '100'])
+        if scraped_posts:
+            new_posts = [post for post in scraped_posts if post['uri'] not in existing_uris]
+
+            if new_posts:
+                new_posts_found_for_hashtag = True
+                print(f"[INFO] Found {len(new_posts)} new posts for #{hashtag}.")
+                all_new_posts_for_hashtag.extend(new_posts)
+                for post in new_posts:
+                    existing_uris.add(post['uri'])
+            else:
+                print(f"[DEBUG] No new Bluesky posts found for #{hashtag}.")
+    
+    if 'Reddit' in platforms and platforms['Reddit']:
+        reddit_url = platforms['Reddit']
+        match = re.search(r'reddit\\.com/r/([^/]+)', reddit_url)
+        if match:
+            subreddit_name = match.group(1)
+            reddit_scraper_path = os.path.join(script_dir, 'reddit_scraper.py')
+            reddit_data = run_scraper(reddit_scraper_path, [subreddit_name])
+            
+            if reddit_data:
+                processed_reddit_data = {
+                    'subreddit': subreddit_name,
+                    'subscribers': reddit_data.get('subscribers', 0),
+                    'active_user_count': reddit_data.get('active_user_count', 0),
+                    'posts_count': len(reddit_data.get('posts', [])),
+                    'avg_score': sum(p['score'] for p in reddit_data.get('posts', [])) / len(reddit_data['posts']) if reddit_data.get('posts') else 0,
+                    'avg_comments': sum(p['num_comments'] for p in reddit_data.get('posts', [])) / len(reddit_data['posts']) if reddit_data.get('posts') else 0
+                }
+                write_reddit_data_to_csv(processed_reddit_data, output_reddit_analytics_csv_path)
+
+    if 'YouTube' in platforms and platforms['YouTube']:
+        if hashtag in existing_youtube_hashtags:
+            print(f"[DEBUG] YouTube data for #{hashtag} already exists. Skipping.")
+        else:
+            youtube_scraper_path = os.path.join(script_dir, 'youtube_scraper.py')
+            videos = run_scraper(youtube_scraper_path, [hashtag, '--limit', '5'])
+            
+            youtube_analytics = {
+                'hashtag': hashtag,
+                'total_views': 0,
+                'total_likes': 0,
+                'total_comments': 0,
+                'top_video_url': ""
+            }
+
+            if videos:
+                top_video = max(videos, key=lambda v: v.get('view_count', 0) or 0)
+                youtube_analytics['total_views'] = top_video.get('view_count') or 0
+                youtube_analytics['total_likes'] = top_video.get('like_count') or 0
+                youtube_analytics['total_comments'] = top_video.get('comment_count') or 0
+                youtube_analytics['top_video_url'] = top_video.get('url', "")
+            
+            write_youtube_data_to_csv(youtube_analytics, output_youtube_analytics_csv_path)
+    return new_posts_found_for_hashtag, all_new_posts_for_hashtag
+
 def main():
+    parser = argparse.ArgumentParser(description="Update social media data for hashtags.")
+    parser.add_argument("--hashtag", help="Process only a specific hashtag.")
+    args = parser.parse_args()
+
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.join(script_dir, '..')
     
@@ -248,68 +318,24 @@ def main():
         print("[DEBUG] No hashtags found or error reading config. Exiting.")
         return
 
-    for entry in hashtag_data:
-        hashtag = entry['hashtag']
-        platforms = entry['platforms']
-
-        if 'Bluesky' in platforms and platforms['Bluesky']:
-            bluesky_scraper_path = os.path.join(script_dir, 'bluesky_scraper.py')
-            scraped_posts = run_scraper(bluesky_scraper_path, [hashtag, '--limit', '100'])
-            if scraped_posts:
-                new_posts = [post for post in scraped_posts if post['uri'] not in existing_uris]
-
-                if new_posts:
-                    new_posts_found = True
-                    print(f"[INFO] Found {len(new_posts)} new posts for #{hashtag}.")
-                    all_new_posts.extend(new_posts)
-                    for post in new_posts:
-                        existing_uris.add(post['uri'])
-                else:
-                    print(f"[DEBUG] No new Bluesky posts found for #{hashtag}.")
-        
-        if 'Reddit' in platforms and platforms['Reddit']:
-            reddit_url = platforms['Reddit']
-            match = re.search(r'reddit\\.com/r/([^/]+)', reddit_url)
-            if match:
-                subreddit_name = match.group(1)
-                reddit_scraper_path = os.path.join(script_dir, 'reddit_scraper.py')
-                reddit_data = run_scraper(reddit_scraper_path, [subreddit_name])
-                
-                if reddit_data:
-                    processed_reddit_data = {
-                        'subreddit': subreddit_name,
-                        'subscribers': reddit_data.get('subscribers', 0),
-                        'active_user_count': reddit_data.get('active_user_count', 0),
-                        'posts_count': len(reddit_data.get('posts', [])),
-                        'avg_score': sum(p['score'] for p in reddit_data.get('posts', [])) / len(reddit_data['posts']) if reddit_data.get('posts') else 0,
-                        'avg_comments': sum(p['num_comments'] for p in reddit_data.get('posts', [])) / len(reddit_data['posts']) if reddit_data.get('posts') else 0
-                    }
-                    write_reddit_data_to_csv(processed_reddit_data, output_reddit_analytics_csv_path)
-
-        if 'YouTube' in platforms and platforms['YouTube']:
-            if hashtag in existing_youtube_hashtags:
-                print(f"[DEBUG] YouTube data for #{hashtag} already exists. Skipping.")
-                continue
-
-            youtube_scraper_path = os.path.join(script_dir, 'youtube_scraper.py')
-            videos = run_scraper(youtube_scraper_path, [hashtag, '--limit', '5'])
-            
-            youtube_analytics = {
-                'hashtag': hashtag,
-                'total_views': 0,
-                'total_likes': 0,
-                'total_comments': 0,
-                'top_video_url': ""
-            }
-
-            if videos:
-                top_video = max(videos, key=lambda v: v.get('view_count', 0) or 0)
-                youtube_analytics['total_views'] = top_video.get('view_count', 0) or 0
-                youtube_analytics['total_likes'] = top_video.get('like_count', 0) or 0
-                youtube_analytics['total_comments'] = top_video.get('comment_count', 0) or 0
-                youtube_analytics['top_video_url'] = top_video.get('url', "")
-            
-            write_youtube_data_to_csv(youtube_analytics, output_youtube_analytics_csv_path)
+    if args.hashtag:
+        # Process only the specified hashtag
+        filtered_hashtag_data = [entry for entry in hashtag_data if entry['hashtag'].lower() == args.hashtag.lower()]
+        if not filtered_hashtag_data:
+            print(f"[ERROR] Hashtag '{args.hashtag}' not found in config.json. Exiting.")
+            return
+        for entry in filtered_hashtag_data:
+            found, new_posts = process_single_hashtag(entry, script_dir, project_root, existing_uris, existing_youtube_hashtags, output_scraped_csv_path, output_reddit_analytics_csv_path, output_youtube_analytics_csv_path)
+            if found:
+                new_posts_found = True
+                all_new_posts.extend(new_posts)
+    else:
+        # Process all hashtags
+        for entry in hashtag_data:
+            found, new_posts = process_single_hashtag(entry, script_dir, project_root, existing_uris, existing_youtube_hashtags, output_scraped_csv_path, output_reddit_analytics_csv_path, output_youtube_analytics_csv_path)
+            if found:
+                new_posts_found = True
+                all_new_posts.extend(new_posts)
 
     if all_new_posts:
         write_scraped_data_to_csv(all_new_posts, output_scraped_csv_path)

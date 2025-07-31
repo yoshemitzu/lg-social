@@ -12,25 +12,31 @@ def main():
         action="store_true",
         help="Skip the data update process before generating the report."
     )
+    parser.add_argument(
+        "--hashtag",
+        help="Process only a specific hashtag when updating data."
+    )
     args = parser.parse_args()
 
     project_root = os.path.dirname(os.path.abspath(__file__))
     make_html_script_path = os.path.join(project_root, 'scripts', 'make-html.py')
-    html_dir = os.path.join(project_root, 'reports')
+    reports_dir = os.path.join(project_root, 'reports')
 
     print("Generating HTML report...")
     command = [sys.executable, make_html_script_path]
     if not args.no_update:
         print("Updating data...")
         command.append('--update-data')
+        if args.hashtag:
+            command.extend(['--hashtag', args.hashtag])
     
     try:
         subprocess.run(command, check=True, capture_output=True, text=True)
         
         # Find the most recent HTML file
-        list_of_files = glob.glob(os.path.join(html_dir, '*.html'))
+        list_of_files = glob.glob(os.path.join(reports_dir, '*.html'))
         if not list_of_files:
-            print("No HTML files found in the html directory.")
+            print("No HTML files found in the reports directory.")
             return
 
         latest_file = max(list_of_files, key=os.path.getctime)

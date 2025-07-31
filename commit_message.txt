@@ -1,4 +1,0 @@
-chore: Remove unused html/ directory and update .gitignore
-
-- Removed the html/ directory as it is no longer needed.
-- Updated .gitignore to remove the html/ entry.
