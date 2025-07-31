@@ -1,7 +1,7 @@
-refactor: Centralize hashtag management and improve report performance
+feat: Use dedicated reports directory and add to gitignore
 
-- Centralized hashtag management by moving the list of hashtags to config.json.
-- Refactored scripts to read hashtags from config.json, removing the dependency on HashtagLinks.csv.
-- Created a new script to generate HashtagLinks.csv on an ad hoc basis.
-- Improved report performance by replacing list.js with a plain JavaScript implementation for sorting and filtering.
-- Added a main.py script to generate and open the report.
+- Deleted old HTML reports from the html/ directory.
+- Created a new reports/ directory for generated HTML reports.
+- Modified scripts/make-html.py to output reports to the new reports/ directory.
+- Modified main.py to look for reports in the reports/ directory.
+- Added reports/ to .gitignore to prevent committing generated reports.

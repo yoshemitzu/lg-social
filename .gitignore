@@ -22,6 +22,7 @@ Thumbs.db
 
 # Generated HTML reports
 html/
+reports/
 
 # Scraped data
 data/BlueskyScrapedData.csv

@@ -191,7 +191,7 @@ def generate_report(args, config):
     print(f"[DEBUG] YouTube Analytics Data passed to template: {youtube_analytics_data}")
 
     # Create the output directory if it doesn't exist
-    output_dir = os.path.join(project_root, 'html')
+    output_dir = os.path.join(project_root, 'reports')
     out_dir = os.path.dirname(args.output) if args.output else output_dir
     os.makedirs(out_dir, exist_ok=True)
 
@@ -231,7 +231,7 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.join(script_dir, '..')
     
-    output_dir = os.path.join(project_root, 'html')
+    output_dir = os.path.join(project_root, 'reports')
     config_path = os.path.join(project_root, 'config.json')
 
     parser = argparse.ArgumentParser(description="Convert a CSV of hashtags to an HTML table.")

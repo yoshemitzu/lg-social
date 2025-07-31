@@ -16,7 +16,7 @@ def main():
 
     project_root = os.path.dirname(os.path.abspath(__file__))
     make_html_script_path = os.path.join(project_root, 'scripts', 'make-html.py')
-    html_dir = os.path.join(project_root, 'html')
+    html_dir = os.path.join(project_root, 'reports')
 
     print("Generating HTML report...")
     command = [sys.executable, make_html_script_path]
