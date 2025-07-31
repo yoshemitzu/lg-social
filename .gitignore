@@ -21,7 +21,7 @@ env/
 Thumbs.db
 
 # Generated HTML reports
-html/
+
 reports/
 
 # Scraped data

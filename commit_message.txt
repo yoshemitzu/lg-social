@@ -1,7 +1,4 @@
-feat: Use dedicated reports directory and add to gitignore
+chore: Remove unused html/ directory and update .gitignore
 
-- Deleted old HTML reports from the html/ directory.
-- Created a new reports/ directory for generated HTML reports.
-- Modified scripts/make-html.py to output reports to the new reports/ directory.
-- Modified main.py to look for reports in the reports/ directory.
-- Added reports/ to .gitignore to prevent committing generated reports.
+- Removed the html/ directory as it is no longer needed.
+- Updated .gitignore to remove the html/ entry.
