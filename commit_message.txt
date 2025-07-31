@@ -1,0 +1,7 @@
+refactor: Centralize hashtag management and improve report performance
+
+- Centralized hashtag management by moving the list of hashtags to config.json.
+- Refactored scripts to read hashtags from config.json, removing the dependency on HashtagLinks.csv.
+- Created a new script to generate HashtagLinks.csv on an ad hoc basis.
+- Improved report performance by replacing list.js with a plain JavaScript implementation for sorting and filtering.
+- Added a main.py script to generate and open the report.
