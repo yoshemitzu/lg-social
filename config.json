@@ -1,4 +1,33 @@
 {
+  "hashtags": [
+    "LearnGraph",
+    "EdTech",
+    "OpenEducation",
+    "FutureOfEducation",
+    "PersonalizedLearning",
+    "LifelongLearning",
+    "KnowledgeGraph",
+    "KnowledgeMapping",
+    "PeerLearning",
+    "MentorshipMatters",
+    "LearningCommunities",
+    "CognitiveScience",
+    "HowWeLearn",
+    "AIinEducation",
+    "LearningAnalytics",
+    "Metacognition",
+    "Web3Education",
+    "DecentralizedLearning",
+    "SemanticWeb",
+    "BlueskySocial"
+  ],
+  "platform_url_templates": {
+    "Instagram": "https://www.instagram.com/explore/tags/{}",
+    "Reddit": "https://www.reddit.com/search/?q=%23{}",
+    "YouTube": "https://www.youtube.com/results?search_query=%23{}",
+    "Bluesky": "https://bsky.app/search?q=%23{}",
+    "Twitter/X": "https://twitter.com/search?q=%23{}"
+  },
   "reddit_status_colors": {
     "No Content": "#FFFFE0",
     "Private": "#ADD8E6",

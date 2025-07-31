@@ -1,6 +1,7 @@
 metric,hashtag,date,author,value
-daily_posts,EdTech,2025-07-30,,17
+daily_posts,EdTech,2025-07-30,,39
 daily_posts,EdTech,2025-07-29,,84
+daily_posts,EdTech,2025-07-31,,81
 daily_posts,OpenEducation,2025-07-29,,1
 daily_posts,OpenEducation,2025-07-28,,4
 daily_posts,OpenEducation,2025-07-26,,1
@@ -38,6 +39,8 @@ daily_posts,OpenEducation,2025-06-05,,7
 daily_posts,OpenEducation,2025-06-04,,3
 daily_posts,OpenEducation,2025-06-03,,6
 daily_posts,OpenEducation,2025-06-02,,3
+daily_posts,OpenEducation,2025-07-31,,2
+daily_posts,OpenEducation,2025-07-30,,1
 daily_posts,FutureOfEducation,2025-07-26,,1
 daily_posts,FutureOfEducation,2025-07-22,,1
 daily_posts,FutureOfEducation,2025-07-21,,2
@@ -67,6 +70,7 @@ daily_posts,FutureOfEducation,2025-06-11,,1
 daily_posts,FutureOfEducation,2025-06-10,,3
 daily_posts,FutureOfEducation,2025-06-04,,1
 daily_posts,FutureOfEducation,2025-06-02,,2
+daily_posts,FutureOfEducation,2025-07-30,,1
 daily_posts,PersonalizedLearning,2025-07-26,,2
 daily_posts,PersonalizedLearning,2025-07-17,,1
 daily_posts,PersonalizedLearning,2025-07-16,,1
@@ -122,7 +126,8 @@ daily_posts,PersonalizedLearning,2025-03-04,,2
 daily_posts,PersonalizedLearning,2025-03-03,,2
 daily_posts,PersonalizedLearning,2025-03-02,,1
 daily_posts,PersonalizedLearning,2025-02-26,,1
-daily_posts,LifelongLearning,2025-07-30,,6
+daily_posts,PersonalizedLearning,2025-07-30,,1
+daily_posts,LifelongLearning,2025-07-30,,12
 daily_posts,LifelongLearning,2025-07-29,,12
 daily_posts,LifelongLearning,2025-07-28,,9
 daily_posts,LifelongLearning,2025-07-27,,5
@@ -133,6 +138,7 @@ daily_posts,LifelongLearning,2025-07-23,,7
 daily_posts,LifelongLearning,2025-07-22,,9
 daily_posts,LifelongLearning,2025-07-21,,8
 daily_posts,LifelongLearning,2025-07-20,,19
+daily_posts,LifelongLearning,2025-07-31,,9
 daily_posts,KnowledgeGraph,2025-07-27,,1
 daily_posts,KnowledgeGraph,2025-07-25,,1
 daily_posts,KnowledgeGraph,2025-07-24,,1
@@ -190,6 +196,7 @@ daily_posts,KnowledgeGraph,2025-04-24,,2
 daily_posts,KnowledgeGraph,2025-04-19,,1
 daily_posts,KnowledgeGraph,2025-04-18,,1
 daily_posts,KnowledgeGraph,2025-04-17,,1
+daily_posts,KnowledgeGraph,2025-07-30,,1
 daily_posts,PeerLearning,2025-07-22,,1
 daily_posts,PeerLearning,2025-07-19,,1
 daily_posts,PeerLearning,2025-07-08,,1
@@ -277,6 +284,8 @@ daily_posts,MentorshipMatters,2025-06-10,,5
 daily_posts,MentorshipMatters,2025-06-09,,1
 daily_posts,MentorshipMatters,2025-06-08,,2
 daily_posts,MentorshipMatters,2025-06-06,,2
+daily_posts,MentorshipMatters,2025-07-31,,5
+daily_posts,MentorshipMatters,2025-07-30,,1
 daily_posts,LearningCommunities,2025-06-09,,1
 daily_posts,LearningCommunities,2025-06-08,,1
 daily_posts,LearningCommunities,2025-04-22,,1
@@ -295,7 +304,7 @@ daily_posts,LearningCommunities,2024-12-11,,1
 daily_posts,LearningCommunities,2024-12-09,,1
 daily_posts,LearningCommunities,2024-11-30,,1
 daily_posts,LearningCommunities,2024-11-24,,1
-daily_posts,CognitiveScience,2025-07-30,,1
+daily_posts,CognitiveScience,2025-07-30,,2
 daily_posts,CognitiveScience,2025-07-29,,3
 daily_posts,CognitiveScience,2025-07-28,,6
 daily_posts,CognitiveScience,2025-07-27,,2
@@ -332,11 +341,12 @@ daily_posts,CognitiveScience,2025-06-25,,2
 daily_posts,CognitiveScience,2025-06-24,,2
 daily_posts,CognitiveScience,2025-06-23,,1
 daily_posts,CognitiveScience,2025-06-21,,2
+daily_posts,CognitiveScience,2025-07-31,,2
 daily_posts,HowWeLearn,2025-07-21,,1
 daily_posts,HowWeLearn,2025-06-12,,1
 daily_posts,HowWeLearn,2025-05-30,,2
 daily_posts,HowWeLearn,2025-05-29,,1
-daily_posts,AIinEducation,2025-07-30,,3
+daily_posts,AIinEducation,2025-07-30,,18
 daily_posts,AIinEducation,2025-07-29,,1
 daily_posts,AIinEducation,2025-07-28,,12
 daily_posts,AIinEducation,2025-07-27,,7
@@ -346,6 +356,7 @@ daily_posts,AIinEducation,2025-07-24,,5
 daily_posts,AIinEducation,2025-07-23,,15
 daily_posts,AIinEducation,2025-07-22,,19
 daily_posts,AIinEducation,2025-07-21,,11
+daily_posts,AIinEducation,2025-07-31,,6
 daily_posts,LearningAnalytics,2025-07-29,,1
 daily_posts,LearningAnalytics,2025-07-28,,1
 daily_posts,LearningAnalytics,2025-07-22,,1
@@ -583,7 +594,8 @@ daily_posts,SemanticWeb,2025-03-19,,1
 daily_posts,SemanticWeb,2025-03-15,,1
 daily_posts,SemanticWeb,2025-03-14,,3
 daily_posts,SemanticWeb,2025-03-13,,2
-daily_posts,BlueskySocial,2025-07-30,,1
+daily_posts,SemanticWeb,2025-07-30,,1
+daily_posts,BlueskySocial,2025-07-30,,5
 daily_posts,BlueskySocial,2025-07-29,,4
 daily_posts,BlueskySocial,2025-07-28,,2
 daily_posts,BlueskySocial,2025-07-27,,2
@@ -610,16 +622,17 @@ daily_posts,BlueskySocial,2025-07-07,,4
 daily_posts,BlueskySocial,2025-07-05,,2
 daily_posts,BlueskySocial,2025-07-04,,3
 daily_posts,BlueskySocial,2025-07-03,,5
-top_poster_activity,EdTech,,Education Technology News,23
-top_poster_activity,EdTech,,DavidPBLRoss,7
-top_poster_activity,EdTech,,Rene Corbeil,7
-top_poster_activity,EdTech,,Kasey Bell,5
-top_poster_activity,EdTech,,Pure Tech,3
-top_poster_activity,OpenEducation,,OEGlobal,48
+daily_posts,BlueskySocial,2025-07-31,,4
+top_poster_activity,EdTech,,Education Technology News,44
+top_poster_activity,EdTech,,Rene Corbeil,15
+top_poster_activity,EdTech,,DavidPBLRoss,14
+top_poster_activity,EdTech,,Kasey Bell,7
+top_poster_activity,EdTech,,@rainbucks_official,3
+top_poster_activity,OpenEducation,,OEGlobal,50
 top_poster_activity,OpenEducation,,SPARC,9
 top_poster_activity,OpenEducation,,OERcamp,9
 top_poster_activity,OpenEducation,,Ash Barber (she/her),3
-top_poster_activity,OpenEducation,,LibreTexts,2
+top_poster_activity,OpenEducation,,ALTUK.bsky.social,3
 top_poster_activity,FutureOfEducation,,Judy Keller,4
 top_poster_activity,FutureOfEducation,,Wulfy,3
 top_poster_activity,FutureOfEducation,,besteducation.bsky.social,2
@@ -631,9 +644,9 @@ top_poster_activity,PersonalizedLearning,,Citizen Portal News Pennsylvania,5
 top_poster_activity,PersonalizedLearning,,Tutree Education,5
 top_poster_activity,PersonalizedLearning,,Citizen Portal News Michigan,4
 top_poster_activity,LifelongLearning,,Daily facts,39
-top_poster_activity,LifelongLearning,,Josh Cole,4
+top_poster_activity,LifelongLearning,,Josh Cole,5
+top_poster_activity,LifelongLearning,,Ekimellnea,4
 top_poster_activity,LifelongLearning,,Redwood Performance Group,3
-top_poster_activity,LifelongLearning,,Ekimellnea,2
 top_poster_activity,LifelongLearning,,Knolinfos,2
 top_poster_activity,KnowledgeGraph,,Neo4j ,18
 top_poster_activity,KnowledgeGraph,,Wp-dd.com: WordPress Design and Development,14
@@ -645,8 +658,8 @@ top_poster_activity,PeerLearning,,Simon Dückert,5
 top_poster_activity,PeerLearning,,Peer 2 Peer University,3
 top_poster_activity,PeerLearning,,Edutopia,2
 top_poster_activity,PeerLearning,,Thomas Jenewein,2
-top_poster_activity,MentorshipMatters,,iCouldBe.org,11
-top_poster_activity,MentorshipMatters,,MentorCity,9
+top_poster_activity,MentorshipMatters,,iCouldBe.org,12
+top_poster_activity,MentorshipMatters,,MentorCity,10
 top_poster_activity,MentorshipMatters,,"A Few Good MENtors, Inc",4
 top_poster_activity,MentorshipMatters,,amwadoctors.bsky.social,3
 top_poster_activity,MentorshipMatters,,Cochrane_US,3
@@ -665,11 +678,11 @@ top_poster_activity,HowWeLearn,,Oriel High School,1
 top_poster_activity,HowWeLearn,,Awakari,1
 top_poster_activity,HowWeLearn,,LLMs,1
 top_poster_activity,HowWeLearn,,Essex and Thames SCITT Teacher Training,1
-top_poster_activity,AIinEducation,,DavidPBLRoss,28
-top_poster_activity,AIinEducation,,Kasey Bell,15
-top_poster_activity,AIinEducation,,Chartered College of Teaching,5
+top_poster_activity,AIinEducation,,DavidPBLRoss,33
+top_poster_activity,AIinEducation,,Kasey Bell,18
+top_poster_activity,AIinEducation,,Chartered College of Teaching,6
 top_poster_activity,AIinEducation,,Chris Davis,4
-top_poster_activity,AIinEducation,,Thamir Aljobori,2
+top_poster_activity,AIinEducation,,Ed3 DAO,2
 top_poster_activity,LearningAnalytics,,sjgknight,24
 top_poster_activity,LearningAnalytics,,Rob L,6
 top_poster_activity,LearningAnalytics,,ladlacademy.bsky.social,6
@@ -687,20 +700,20 @@ top_poster_activity,Web3Education,,OmniSocial,2
 top_poster_activity,Web3Education,,Decentralist.com |.eth |.lens,2
 top_poster_activity,DecentralizedLearning,,Heidi Cuppari,1
 top_poster_activity,SemanticWeb,,SEMANTiCS Conference,19
-top_poster_activity,SemanticWeb,,International Semantic Web Conference,12
+top_poster_activity,SemanticWeb,,International Semantic Web Conference,13
 top_poster_activity,SemanticWeb,,Disease Ontology (DO),5
 top_poster_activity,SemanticWeb,,Digital History Berlin,4
 top_poster_activity,SemanticWeb,,Federico Pianzola,3
-top_poster_activity,BlueskySocial,,HumorousZ,10
-top_poster_activity,BlueskySocial,,Gonza 📸,7
+top_poster_activity,BlueskySocial,,HumorousZ,11
+top_poster_activity,BlueskySocial,,Gonza 📸,8
 top_poster_activity,BlueskySocial,,Craig Morrison,5
-top_poster_activity,BlueskySocial,,Lexi Baby,3
-top_poster_activity,BlueskySocial,,"Dr. Marya Wright, LCSW",3
-top_poster_engagement,EdTech,,DavidPBLRoss,14
-top_poster_engagement,EdTech,,adriennecaptain.bsky.social,5
-top_poster_engagement,EdTech,,Book Creator Team,5
-top_poster_engagement,EdTech,,"Jen Roberts, NBCT",4
-top_poster_engagement,EdTech,,ITEC Iowa,4
+top_poster_activity,BlueskySocial,,Lexi Baby,4
+top_poster_activity,BlueskySocial,,Along Came Poly-4-The-W,3
+top_poster_engagement,EdTech,,DavidPBLRoss,27
+top_poster_engagement,EdTech,,News Literacy Project ,17
+top_poster_engagement,EdTech,,Laura Hilliger,10
+top_poster_engagement,EdTech,,adriennecaptain.bsky.social,9
+top_poster_engagement,EdTech,,Rene Corbeil,9
 top_poster_engagement,OpenEducation,,OEGlobal,19
 top_poster_engagement,OpenEducation,,SPARC,19
 top_poster_engagement,OpenEducation,,Rajiv Jhangiani ,15
@@ -719,8 +732,8 @@ top_poster_engagement,PersonalizedLearning,,AZoAI,2
 top_poster_engagement,LifelongLearning,,Dr Elsje van Bergen,10
 top_poster_engagement,LifelongLearning,,Knolinfos,5
 top_poster_engagement,LifelongLearning,,collasconf.bsky.social,5
+top_poster_engagement,LifelongLearning,,Omnia Valorem,5
 top_poster_engagement,LifelongLearning,,Daily facts,3
-top_poster_engagement,LifelongLearning,,"Doug Richmond, PhD",3
 top_poster_engagement,KnowledgeGraph,,Linghua Jin,41
 top_poster_engagement,KnowledgeGraph,,Neo4j ,20
 top_poster_engagement,KnowledgeGraph,,Andreea Iana,11
@@ -751,7 +764,7 @@ top_poster_engagement,HowWeLearn,,Next Generation Learning Challenges,0
 top_poster_engagement,HowWeLearn,,Oriel High School,0
 top_poster_engagement,HowWeLearn,,Awakari,0
 top_poster_engagement,HowWeLearn,,LLMs,0
-top_poster_engagement,AIinEducation,,DavidPBLRoss,82
+top_poster_engagement,AIinEducation,,DavidPBLRoss,93
 top_poster_engagement,AIinEducation,,Kasey Bell,9
 top_poster_engagement,AIinEducation,,Chartered College of Teaching,8
 top_poster_engagement,AIinEducation,,Ryan Hoxie,5
@@ -773,12 +786,12 @@ top_poster_engagement,Web3Education,,Geek Metaverse ,3
 top_poster_engagement,Web3Education,,OmniSocial,2
 top_poster_engagement,DecentralizedLearning,,Heidi Cuppari,0
 top_poster_engagement,SemanticWeb,,SEMANTiCS Conference,41
-top_poster_engagement,SemanticWeb,,International Semantic Web Conference,32
+top_poster_engagement,SemanticWeb,,International Semantic Web Conference,35
 top_poster_engagement,SemanticWeb,,Federico Pianzola,21
 top_poster_engagement,SemanticWeb,,Pascal Hitzler,16
 top_poster_engagement,SemanticWeb,,International Semantic Web Research Summer School,16
-top_poster_engagement,BlueskySocial,,HumorousZ,58
+top_poster_engagement,BlueskySocial,,HumorousZ,61
 top_poster_engagement,BlueskySocial,,Craig Morrison,52
+top_poster_engagement,BlueskySocial,,Gonza 📸,41
 top_poster_engagement,BlueskySocial,,sophiakramerart,40
-top_poster_engagement,BlueskySocial,,Gonza 📸,39
 top_poster_engagement,BlueskySocial,,Patrick Chuprina,33

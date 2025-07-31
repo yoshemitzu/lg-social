@@ -7,7 +7,6 @@
   <meta name="keywords" content="LearnGraph, education, hashtags, social media, knowledge graph, learning, EdTech">
   <meta name="author" content="LearnGraph Project">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
   <style>
     body {
       font-family: sans-serif;
@@ -145,7 +144,7 @@
     {% endfor %}
   </div>
   <div id="hashtag-table">
-    <input type="text" class="search" placeholder="Search table" />
+    <input type="text" id="search-input" placeholder="Search table" />
     <table>
       <thead>
         <tr>
@@ -159,7 +158,7 @@
           {% endfor %}
         </tr>
       </thead>
-      <tbody class="list">
+      <tbody id="table-body">
         {% for row in rows %}
         <tr>
           {% for cell in row %}
@@ -175,6 +174,7 @@
               {{ cell.replace('#', '') }}
             {% elif headers[loop.index0] == 'YouTube' and youtube_analytics_data[hashtag] %}
               <a href="{{ youtube_analytics_data[hashtag]['top_video_url'] }}" target="_blank">Top Video</a>
+              <a href="https://www.youtube.com/results?search_query=%23{{ hashtag }}" target="_blank">(Search)</a>
               <br>
               <small>Views: {{ youtube_analytics_data[hashtag]['total_views'] }} | Likes: {{ youtube_analytics_data[hashtag]['total_likes'] }} | Comments: {{ youtube_analytics_data[hashtag]['total_comments'] }}</small>
             {% elif cell.startswith('http') %}
@@ -192,6 +192,39 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('search-input');
+      const tableBody = document.getElementById('table-body');
+      const rows = Array.from(tableBody.getElementsByTagName('tr'));
+
+      searchInput.addEventListener('keyup', function() {
+        const searchTerm = this.value.toLowerCase();
+        rows.forEach(row => {
+          const text = row.textContent.toLowerCase();
+          row.style.display = text.includes(searchTerm) ? '' : 'none';
+        });
+      });
+
+      const headers = Array.from(document.querySelectorAll('#hashtag-table th.sort'));
+      headers.forEach((header, index) => {
+        header.addEventListener('click', () => {
+          const sortKey = header.dataset.sort;
+          const isAsc = header.classList.contains('asc');
+          const direction = isAsc ? -1 : 1;
+
+          const sortedRows = rows.sort((a, b) => {
+            const aVal = a.cells[index].textContent.trim();
+            const bVal = b.cells[index].textContent.trim();
+            return aVal.localeCompare(bVal, undefined, {numeric: true}) * direction;
+          });
+
+          headers.forEach(h => h.classList.remove('asc', 'desc'));
+          header.classList.toggle('asc', !isAsc);
+          header.classList.toggle('desc', isAsc);
+
+          sortedRows.forEach(row => tableBody.appendChild(row));
+        });
+      });
+
       const checkboxes = document.querySelectorAll('.hashtag-checkbox');
       const headerCheckboxes = document.querySelectorAll('.header-checkbox');
       const searchLinksContainer = document.getElementById('search-links');
@@ -253,15 +286,6 @@
           updateSearchLinks();
         });
       });
-
-      var options = {
-        valueNames: [
-          {% for header in headers %}
-          '{{ header | replace(' 🔗', '') }}'{% if not loop.last %},{% endif %}
-          {% endfor %}
-        ]
-      };
-      var userList = new List('hashtag-table', options);
     });
   </script>
 </body>

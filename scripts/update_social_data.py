@@ -7,24 +7,24 @@ import json
 from collections import defaultdict
 from datetime import datetime
 
-def read_hashtags_from_csv(csv_path):
-    print(f"[DEBUG] Reading hashtags from: {csv_path}")
-    hashtags = []
+def read_hashtags_from_config(config_path):
+    print(f"[DEBUG] Reading hashtags from: {config_path}")
     try:
-        with open(csv_path, 'r', encoding='utf-8') as f:
-            reader = csv.reader(f)
-            headers = next(reader)  # Read header row
-            for row in reader:
-                if row:
-                    hashtag = row[0].lstrip('#')
-                    platforms = {headers[i].replace(' 🔗', ''): row[i] for i in range(1, len(row))}
-                    hashtags.append({'hashtag': hashtag, 'platforms': platforms})
-        print(f"[DEBUG] Found {len(hashtags)} hashtags.")
+        with open(config_path, 'r', encoding='utf-8') as f:
+            config = json.load(f)
+        hashtags = config.get('hashtags', [])
+        platform_url_templates = config.get('platform_url_templates', {})
+        hashtag_data = []
+        for hashtag in hashtags:
+            platforms = {platform: template.format(hashtag) for platform, template in platform_url_templates.items()}
+            hashtag_data.append({'hashtag': hashtag, 'platforms': platforms})
+        print(f"[DEBUG] Found {len(hashtag_data)} hashtags.")
+        return hashtag_data
     except FileNotFoundError:
-        print(f"[ERROR] Hashtag CSV file not found: {csv_path}")
+        print(f"[ERROR] Config file not found: {config_path}")
     except Exception as e:
-        print(f"[ERROR] Error reading hashtag CSV: {e}")
-    return hashtags
+        print(f"[ERROR] Error reading config file: {e}")
+    return []
 
 def get_existing_post_uris(csv_path):
     """Reads a CSV file and returns a set of post URIs."""
@@ -222,14 +222,14 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.join(script_dir, '..')
     
-    hashtags_csv_path = os.path.join(project_root, 'data', 'HashtagLinks.csv')
+    config_path = os.path.join(project_root, 'config.json')
     output_scraped_csv_path = os.path.join(project_root, 'data', 'BlueskyScrapedData.csv')
     output_analytics_csv_path = os.path.join(project_root, 'data', 'BlueskyAnalytics.csv')
     output_reddit_analytics_csv_path = os.path.join(project_root, 'data', 'RedditAnalytics.csv')
     output_youtube_analytics_csv_path = os.path.join(project_root, 'data', 'YouTubeAnalytics.csv')
 
     print("[DEBUG] Starting incremental update_social_data.py.")
-    hashtag_data = read_hashtags_from_csv(hashtags_csv_path)
+    hashtag_data = read_hashtags_from_config(config_path)
     
     existing_uris = get_existing_post_uris(output_scraped_csv_path)
     existing_youtube_hashtags = get_existing_youtube_hashtags(output_youtube_analytics_csv_path)
@@ -245,7 +245,7 @@ def main():
     all_new_posts = []
 
     if not hashtag_data:
-        print("[DEBUG] No hashtags found or error reading CSV. Exiting.")
+        print("[DEBUG] No hashtags found or error reading config. Exiting.")
         return
 
     for entry in hashtag_data:
@@ -296,18 +296,18 @@ def main():
             
             youtube_analytics = {
                 'hashtag': hashtag,
-                'total_views': None,
-                'total_likes': None,
-                'total_comments': None,
-                'top_video_url': None
+                'total_views': 0,
+                'total_likes': 0,
+                'total_comments': 0,
+                'top_video_url': ""
             }
 
             if videos:
                 top_video = max(videos, key=lambda v: v.get('view_count', 0) or 0)
-                youtube_analytics['total_views'] = top_video.get('view_count')
-                youtube_analytics['total_likes'] = top_video.get('like_count')
-                youtube_analytics['total_comments'] = top_video.get('comment_count')
-                youtube_analytics['top_video_url'] = top_video.get('url')
+                youtube_analytics['total_views'] = top_video.get('view_count', 0) or 0
+                youtube_analytics['total_likes'] = top_video.get('like_count', 0) or 0
+                youtube_analytics['total_comments'] = top_video.get('comment_count', 0) or 0
+                youtube_analytics['top_video_url'] = top_video.get('url', "")
             
             write_youtube_data_to_csv(youtube_analytics, output_youtube_analytics_csv_path)
 

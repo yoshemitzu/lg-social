@@ -4,7 +4,6 @@ import os
 import sys
 import datetime
 import argparse
-import webbrowser
 import time
 import subprocess # Added for running update_social_data.py
 from watchdog.observers import Observer
@@ -102,7 +101,7 @@ def read_youtube_analytics_data(csv_path):
     try:
         with open(csv_path, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
-            all_views = [int(row['total_views']) for row in reader if row['total_views'] and row['total_views'].isdigit()]
+            all_views = [int(row['total_views']) for row in reader if row.get('total_views') and row['total_views'].isdigit()]
             f.seek(0) # Reset file pointer
             next(reader) # Skip header
             if not all_views:
@@ -113,7 +112,8 @@ def read_youtube_analytics_data(csv_path):
                 hashtag = row.get('hashtag')
                 if hashtag:
                     youtube_analytics_data[hashtag] = row
-                    views = int(row.get('total_views', 0)) or 0
+                    views_str = row.get('total_views', '0')
+                    views = int(views_str) if views_str.isdigit() else 0
                     if views <= quantiles[0]:
                         hotness_levels[hashtag] = 0  # Low
                     elif views <= quantiles[1]:
@@ -162,14 +162,16 @@ def generate_html(headers, rows, out_path, analytics_data, max_daily_posts, hotn
     print(f"HTML written to: {out_path}")
 
 def generate_report(args, config):
-    if not os.path.exists(args.input):
-        print(f"Input file not found: {args.input}")
-        return
-
-    if args.format == 'csv':
-        headers, rows = parse_csv_table(args.input)
-    elif args.format == 'md':
-        headers, rows = parse_md_table(args.input)
+    hashtags = config.get('hashtags', [])
+    platform_url_templates = config.get('platform_url_templates', {})
+    headers = ['Hashtag'] + list(platform_url_templates.keys())
+    rows = []
+    for hashtag in hashtags:
+        row = [f'#{hashtag}']
+        for platform in platform_url_templates:
+            url = platform_url_templates[platform].format(hashtag)
+            row.append(url)
+        rows.append(row)
 
     # Read analytics data
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -185,8 +187,7 @@ def generate_report(args, config):
 
     print(f"[DEBUG] Bluesky Analytics Data passed to template: {analytics_data}")
     print(f"[DEBUG] Max Daily Posts passed to template: {max_daily_posts}")
-    print(f"[DEBUG] Reddit Analytics Data passed to template: {reddit_analytics_data}")
-    print(f"[DEBUG] Max Subscribers passed to template: {max_subscribers}")
+    print(f"[DEBUG] Reddit Analytics Data passed to template: {max_subscribers}")
     print(f"[DEBUG] YouTube Analytics Data passed to template: {youtube_analytics_data}")
 
     # Create the output directory if it doesn't exist
@@ -197,54 +198,46 @@ def generate_report(args, config):
     if args.output:
         out_file = args.output
     else:
-        base = os.path.splitext(os.path.basename(args.input))[0]
+        base = 'HashtagReport'
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H%M")
         out_file = os.path.join(output_dir, f"{base}_{timestamp}.html")
 
     generate_html(headers, rows, out_file, analytics_data, max_daily_posts, hotness_levels, reddit_analytics_data, max_subscribers, youtube_analytics_data, youtube_hotness_levels, config)
 
-    if args.open_browser:
-        webbrowser.open(f"file://{os.path.realpath(out_file)}")
+
+class NpEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        if isinstance(obj, np.floating):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return super(NpEncoder, self).default(obj)
+
 
 class MyEventHandler(FileSystemEventHandler):
-    def __init__(self, args):
+    def __init__(self, args, config):
         self.args = args
+        self.config = config
 
     def on_modified(self, event):
         if not event.is_directory and event.src_path == self.args.input:
             print(f"\nFile modified: {event.src_path}. Regenerating...")
-            generate_report(self.args)
+            generate_report(self.args, self.config)
 
 def main():
     # Get the absolute path of the script and project root
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.join(script_dir, '..')
     
-    default_input = os.path.join(project_root, 'data', 'HashtagLinks.csv')
     output_dir = os.path.join(project_root, 'html')
     config_path = os.path.join(project_root, 'config.json')
 
     parser = argparse.ArgumentParser(description="Convert a CSV of hashtags to an HTML table.")
     parser.add_argument(
-        "-i", "--input",
-        default=default_input,
-        help="Path to the input CSV file."
-    )
-    parser.add_argument(
         "-o", "--output",
         help=f"Path to the output HTML file. Defaults to a timestamped file in the '{output_dir}' directory."
-    )
-    parser.add_argument(
-        "--no-open",
-        dest="open_browser",
-        action="store_false",
-        help="Do not open the generated HTML file in a web browser."
-    )
-    parser.add_argument(
-        "--format",
-        choices=['csv', 'md'],
-        default='csv',
-        help="Input file format (csv or md)."
     )
     parser.add_argument(
         "--watch",
@@ -260,9 +253,8 @@ def main():
         "--agent-timeout",
         type=int,
         default=0,
-        help=argparse.SUPPRESS # Hidden argument for agent testing
+        help=argparse.SUPPRESS
     )
-    parser.set_defaults(open_browser=True)
     args = parser.parse_args()
 
     config = load_config(config_path)
@@ -273,10 +265,10 @@ def main():
         subprocess.run([sys.executable, update_script_path])
 
     if args.watch:
-        print(f"Watching {args.input} for changes... Press Ctrl+C to stop.")
-        event_handler = MyEventHandler(args)
+        print(f"Watching {config_path} for changes... Press Ctrl+C to stop.")
+        event_handler = MyEventHandler(args, config)
         observer = Observer()
-        observer.schedule(event_handler, os.path.dirname(args.input), recursive=False)
+        observer.schedule(event_handler, os.path.dirname(config_path), recursive=False)
         observer.start()
         try:
             start_time = time.time()
