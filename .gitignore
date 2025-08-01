@@ -8,7 +8,7 @@ __pycache__/
 # Virtual environment
 virtualenv/
 virtual-env/
-venv/
+venc/
 env/
 
 # IDE-specific files
@@ -33,3 +33,7 @@ GEMINI_AGENT_NOTES.md
 
 # Bluesky session file
 bluesky_session.json
+
+# Gremlin task files
+gremlin_instructions.json
+gremlin_results.json

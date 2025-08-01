@@ -20,7 +20,9 @@
     "DecentralizedLearning",
     "SemanticWeb",
     "BlueskySocial",
-    "teachers"
+    "teachers",
+    "Education",
+    "AIMentor"
   ],
   "platform_url_templates": {
     "Instagram": "https://www.instagram.com/explore/tags/{}",

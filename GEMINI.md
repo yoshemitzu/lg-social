@@ -52,3 +52,6 @@ This file provides essential information for the Gemini CLI agent to understand 
 - Refine the color-coding scale for Bluesky and implement color-coding for Reddit in the HTML report.
 - For any issues, follow the collaborative debugging protocol: clearly define the problem, propose diagnostic steps for the user, explain the 'why', and request specific output.
 - Be mindful of pacing and user interaction time.
+
+## Data Update Policy
+- **Unless explicitly instructed otherwise, when testing or generating reports for specific hashtags, DO NOT perform a full data update for all hashtags. Only update data for the specified hashtag(s). If no specific hashtag is provided, then a full data update is acceptable.**

@@ -2,6 +2,7 @@ metric,hashtag,date,author,value
 daily_posts,EdTech,2025-07-30,,39
 daily_posts,EdTech,2025-07-29,,84
 daily_posts,EdTech,2025-07-31,,81
+daily_posts,EdTech,2025-08-01,,7
 daily_posts,OpenEducation,2025-07-29,,1
 daily_posts,OpenEducation,2025-07-28,,4
 daily_posts,OpenEducation,2025-07-26,,1
@@ -41,6 +42,7 @@ daily_posts,OpenEducation,2025-06-03,,6
 daily_posts,OpenEducation,2025-06-02,,3
 daily_posts,OpenEducation,2025-07-31,,2
 daily_posts,OpenEducation,2025-07-30,,1
+daily_posts,OpenEducation,2025-08-01,,2
 daily_posts,FutureOfEducation,2025-07-26,,1
 daily_posts,FutureOfEducation,2025-07-22,,1
 daily_posts,FutureOfEducation,2025-07-21,,2
@@ -139,6 +141,7 @@ daily_posts,LifelongLearning,2025-07-22,,9
 daily_posts,LifelongLearning,2025-07-21,,8
 daily_posts,LifelongLearning,2025-07-20,,19
 daily_posts,LifelongLearning,2025-07-31,,9
+daily_posts,LifelongLearning,2025-08-01,,2
 daily_posts,KnowledgeGraph,2025-07-27,,1
 daily_posts,KnowledgeGraph,2025-07-25,,1
 daily_posts,KnowledgeGraph,2025-07-24,,1
@@ -286,6 +289,7 @@ daily_posts,MentorshipMatters,2025-06-08,,2
 daily_posts,MentorshipMatters,2025-06-06,,2
 daily_posts,MentorshipMatters,2025-07-31,,5
 daily_posts,MentorshipMatters,2025-07-30,,1
+daily_posts,MentorshipMatters,2025-08-01,,4
 daily_posts,LearningCommunities,2025-06-09,,1
 daily_posts,LearningCommunities,2025-06-08,,1
 daily_posts,LearningCommunities,2025-04-22,,1
@@ -357,6 +361,7 @@ daily_posts,AIinEducation,2025-07-23,,15
 daily_posts,AIinEducation,2025-07-22,,19
 daily_posts,AIinEducation,2025-07-21,,11
 daily_posts,AIinEducation,2025-07-31,,6
+daily_posts,AIinEducation,2025-08-01,,3
 daily_posts,LearningAnalytics,2025-07-29,,1
 daily_posts,LearningAnalytics,2025-07-28,,1
 daily_posts,LearningAnalytics,2025-07-22,,1
@@ -623,9 +628,16 @@ daily_posts,BlueskySocial,2025-07-05,,2
 daily_posts,BlueskySocial,2025-07-04,,3
 daily_posts,BlueskySocial,2025-07-03,,5
 daily_posts,BlueskySocial,2025-07-31,,4
-daily_posts,teachers,2025-07-31,,46
+daily_posts,BlueskySocial,2025-08-01,,4
+daily_posts,teachers,2025-07-31,,48
 daily_posts,teachers,2025-07-30,,30
-top_poster_activity,EdTech,,Education Technology News,44
+daily_posts,teachers,2025-08-01,,14
+daily_posts,AIMentor,2025-06-30,,1
+daily_posts,AIMentor,2024-03-18,,1
+daily_posts,AIMentor,2024-03-13,,1
+daily_posts,Education,2025-08-01,,61
+daily_posts,Education,2025-07-31,,131
+top_poster_activity,EdTech,,Education Technology News,45
 top_poster_activity,EdTech,,Rene Corbeil,15
 top_poster_activity,EdTech,,DavidPBLRoss,14
 top_poster_activity,EdTech,,Kasey Bell,7
@@ -663,8 +675,8 @@ top_poster_activity,PeerLearning,,Thomas Jenewein,2
 top_poster_activity,MentorshipMatters,,iCouldBe.org,12
 top_poster_activity,MentorshipMatters,,MentorCity,10
 top_poster_activity,MentorshipMatters,,"A Few Good MENtors, Inc",4
+top_poster_activity,MentorshipMatters,,GreatCareersPHL,3
 top_poster_activity,MentorshipMatters,,amwadoctors.bsky.social,3
-top_poster_activity,MentorshipMatters,,Cochrane_US,3
 top_poster_activity,LearningCommunities,,Progressive Education,13
 top_poster_activity,LearningCommunities,,Daily 27,2
 top_poster_activity,LearningCommunities,,Ways to Wellness,2
@@ -681,7 +693,7 @@ top_poster_activity,HowWeLearn,,Awakari,1
 top_poster_activity,HowWeLearn,,LLMs,1
 top_poster_activity,HowWeLearn,,Essex and Thames SCITT Teacher Training,1
 top_poster_activity,AIinEducation,,DavidPBLRoss,33
-top_poster_activity,AIinEducation,,Kasey Bell,18
+top_poster_activity,AIinEducation,,Kasey Bell,19
 top_poster_activity,AIinEducation,,Chartered College of Teaching,6
 top_poster_activity,AIinEducation,,Chris Davis,4
 top_poster_activity,AIinEducation,,Ed3 DAO,2
@@ -707,15 +719,23 @@ top_poster_activity,SemanticWeb,,Disease Ontology (DO),5
 top_poster_activity,SemanticWeb,,Digital History Berlin,4
 top_poster_activity,SemanticWeb,,Federico Pianzola,3
 top_poster_activity,BlueskySocial,,HumorousZ,11
-top_poster_activity,BlueskySocial,,Gonza 📸,8
+top_poster_activity,BlueskySocial,,Gonza 📸,10
 top_poster_activity,BlueskySocial,,Craig Morrison,5
 top_poster_activity,BlueskySocial,,Lexi Baby,4
 top_poster_activity,BlueskySocial,,Along Came Poly-4-The-W,3
+top_poster_activity,teachers,,🦋 Bev…RockAndRoll 🦋📎,10
 top_poster_activity,teachers,,Education Technology News,8
 top_poster_activity,teachers,,Author Stuart Miller (Indie) 📖✍️🤓,5
-top_poster_activity,teachers,,🦋 Bev…RockAndRoll 🦋📎,4
 top_poster_activity,teachers,,PB25Vibes,2
 top_poster_activity,teachers,,Animalearn,2
+top_poster_activity,AIMentor,,🇨🇦 Rob Theriault,1
+top_poster_activity,AIMentor,,sathi ray,1
+top_poster_activity,AIMentor,,Kausar Alvi,1
+top_poster_activity,Education,,Liberty Bot  🗽🤖,12
+top_poster_activity,Education,,audiolibrospigeon.bsky.social,8
+top_poster_activity,Education,,AFB Group ,6
+top_poster_activity,Education,,前川篤志,6
+top_poster_activity,Education,,2rZiKKbOU3nTafniR2qMMSE0gwZ,5
 top_poster_engagement,EdTech,,DavidPBLRoss,27
 top_poster_engagement,EdTech,,News Literacy Project ,17
 top_poster_engagement,EdTech,,Laura Hilliger,10
@@ -725,7 +745,7 @@ top_poster_engagement,OpenEducation,,OEGlobal,19
 top_poster_engagement,OpenEducation,,SPARC,19
 top_poster_engagement,OpenEducation,,Rajiv Jhangiani ,15
 top_poster_engagement,OpenEducation,,OERcamp,12
-top_poster_engagement,OpenEducation,,Karen Cangialosi,8
+top_poster_engagement,OpenEducation,,kattekrab.bsky.social,10
 top_poster_engagement,FutureOfEducation,,IÉSEG,5
 top_poster_engagement,FutureOfEducation,,Vaclav Brezina,4
 top_poster_engagement,FutureOfEducation,,Wulfy,4
@@ -804,6 +824,14 @@ top_poster_engagement,BlueskySocial,,sophiakramerart,40
 top_poster_engagement,BlueskySocial,,Patrick Chuprina,33
 top_poster_engagement,teachers,,Author Stuart Miller (Indie) 📖✍️🤓,148
 top_poster_engagement,teachers,,Honest and Unfiltered,66
-top_poster_engagement,teachers,,🦋 Bev…RockAndRoll 🦋📎,35
+top_poster_engagement,teachers,,🦋 Bev…RockAndRoll 🦋📎,63
 top_poster_engagement,teachers,,The Conversation U.S.,29
 top_poster_engagement,teachers,,Lisa Schmid,23
+top_poster_engagement,AIMentor,,🇨🇦 Rob Theriault,1
+top_poster_engagement,AIMentor,,sathi ray,0
+top_poster_engagement,AIMentor,,Kausar Alvi,0
+top_poster_engagement,Education,,@cmerfy Lifelong Democrat,38
+top_poster_engagement,Education,,Liberty Bot  🗽🤖,12
+top_poster_engagement,Education,,前川篤志,12
+top_poster_engagement,Education,,AFB Group ,10
+top_poster_engagement,Education,,StacesCases2 🇨🇦 📎,10

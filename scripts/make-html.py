@@ -42,7 +42,7 @@ def read_analytics_data(csv_path):
             reader = csv.DictReader(f)
             for row in reader:
                 if row['metric'] == 'daily_posts':
-                    hashtag = row['hashtag']
+                    hashtag = format_hashtag_for_display(row['hashtag'])
                     value = int(row['value'])
                     daily_posts[hashtag].append(value)
         
@@ -109,7 +109,7 @@ def read_youtube_analytics_data(csv_path):
 
             quantiles = np.percentile(all_views, [25, 50, 75])
             for row in reader:
-                hashtag = row.get('hashtag')
+                hashtag = format_hashtag_for_display(row.get('hashtag'))
                 if hashtag:
                     youtube_analytics_data[hashtag] = row
                     views_str = row.get('total_views', '0')
@@ -135,8 +135,11 @@ def load_config(config_path):
         return json.load(f)
 
 def format_hashtag_for_display(hashtag_raw):
-    """Formats a raw hashtag string for display (e.g., 'teachers' -> 'Teachers')."""
-    return hashtag_raw.title()
+    """Formats a raw hashtag string for display, preserving camelCase but ensuring initial capitalization."""
+    if not hashtag_raw:
+        return ""
+    # Capitalize the first letter, and keep the rest as is (preserving camelCase)
+    return hashtag_raw[0].upper() + hashtag_raw[1:]
 
 def generate_html(headers, rows, out_path, analytics_data, max_daily_posts, hotness_levels, reddit_analytics_data, max_subscribers, youtube_analytics_data, youtube_hotness_levels, config):
     # Set up Jinja2 environment
@@ -191,8 +194,11 @@ def generate_report(args, config):
 
     print(f"[DEBUG] Bluesky Analytics Data passed to template: {analytics_data}")
     print(f"[DEBUG] Max Daily Posts passed to template: {max_daily_posts}")
-    print(f"[DEBUG] Reddit Analytics Data passed to template: {max_subscribers}")
+    print(f"[DEBUG] Reddit Analytics Data passed to template: {reddit_analytics_data}")
     print(f"[DEBUG] YouTube Analytics Data passed to template: {youtube_analytics_data}")
+    print(f"[DEBUG] Hotness Levels: {hotness_levels}")
+    print(f"[DEBUG] YouTube Hotness Levels: {youtube_hotness_levels}")
+    print(f"[DEBUG] Subreddit Status: {config['subreddit_status']}")
 
     # Create the output directory if it doesn't exist
     output_dir = os.path.join(project_root, 'reports')

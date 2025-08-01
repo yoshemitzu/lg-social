@@ -31,7 +31,11 @@ def main():
             command.extend(['--hashtag', args.hashtag])
     
     try:
-        subprocess.run(command, check=True, capture_output=True, text=True)
+        process = subprocess.run(command, check=True, capture_output=True, text=True)
+        print("--- make-html.py STDOUT ---")
+        print(process.stdout)
+        print("--- make-html.py STDERR ---")
+        print(process.stderr)
         
         # Find the most recent HTML file
         list_of_files = glob.glob(os.path.join(reports_dir, '*.html'))

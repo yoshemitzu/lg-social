@@ -165,8 +165,8 @@
           {% set hashtag = row[0].replace('#', '') %}
           {% set reddit_status = subreddit_status.get(hashtag, 'Exists') %}
           <td class="{{ headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') }}{% if headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'Bluesky' %}{% if hotness_levels[hashtag] is defined %}
- hotness-{{ hotness_levels[hashtag] }}{% endif %}{% elif headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'YouTube' %}{% if youtube_hotness_levels[hashtag] is defined %}
- hotness-{{ youtube_hotness_levels[hashtag] }}{% endif %}{% endif %}" {% if headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'Reddit' %}style="background-color: {{ reddit_status_colors.get(reddit_status, '#FFFFFF') }};"{% endif %}>
+ hotness-{{ hotness_levels.get(hashtag, -1) }}{% endif %}{% elif headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'YouTube' %}{% if youtube_hotness_levels.get(hashtag, -1) != -1 %}
+ hotness-{{ youtube_hotness_levels.get(hashtag, -1) }}{% endif %}{% endif %}" {% if headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'Reddit' %}style="background-color: {{ reddit_status_colors.get(reddit_status, '#FFFFFF') }};"{% endif %}>
             {% if loop.index0 != 0 %}
             <input type="checkbox" class="hashtag-checkbox" data-hashtag="{{ hashtag }}" data-platform="{{ headers[loop.index0] | replace(' 🔗', '') }}">
             {% endif %}
@@ -190,11 +190,57 @@
     </table>
   </div>
 
+  <div id="add-hashtag-section">
+    <input type="text" id="new-hashtag-input" placeholder="Add new hashtag">
+    <button id="add-hashtag-button">Add Hashtag</button>
+    <button id="export-hashtags-button">Export Hashtags (JSON)</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      const socket = io.connect('http://127.0.0.1:5000');
+
+      socket.on('connect', function() {
+        console.log('Connected to Socket.IO server');
+      });
+
+      socket.on('data_updated', function(data) {
+        console.log('Data updated for hashtag:', data.hashtag);
+        // Find the row for the updated hashtag and update its data
+        const hashtagRow = document.querySelector(`td:first-child[data-hashtag="${data.hashtag}"]`).closest('tr');
+        if (hashtagRow) {
+          // Update Bluesky hotness
+          const blueskyCell = hashtagRow.querySelector('.Bluesky');
+          if (blueskyCell) {
+            blueskyCell.classList.remove('hotness-0', 'hotness-1', 'hotness-2', 'hotness-3');
+            if (data.bluesky_hotness !== -1) {
+              blueskyCell.classList.add(`hotness-${data.bluesky_hotness}`);
+            }
+          }
+
+          // Update YouTube data
+          const youtubeCell = hashtagRow.querySelector('.YouTube');
+          if (youtubeCell && data.youtube_data) {
+            youtubeCell.innerHTML = `
+              <a href="${data.youtube_data.top_video_url}" target="_blank">Top Video</a>
+              <a href="https://www.youtube.com/results?search_query=%23${data.hashtag}" target="_blank">(Search)</a>
+              <br>
+              <small>Views: ${data.youtube_data.total_views} | Likes: ${data.youtube_data.total_likes} | Comments: ${data.youtube_data.total_comments}</small>
+            `;
+            youtubeCell.classList.remove('hotness-0', 'hotness-1', 'hotness-2', 'hotness-3');
+            if (data.youtube_hotness !== -1) {
+              youtubeCell.classList.add(`hotness-${data.youtube_hotness}`);
+            }
+          }
+        }
+      });
+
       const searchInput = document.getElementById('search-input');
       const tableBody = document.getElementById('table-body');
-      const rows = Array.from(tableBody.getElementsByTagName('tr'));
+      let rows = Array.from(tableBody.getElementsByTagName('tr')); // Use let for reassigning
+      const addHashtagInput = document.getElementById('new-hashtag-input');
+      const addHashtagButton = document.getElementById('add-hashtag-button');
 
       searchInput.addEventListener('keyup', function() {
         const searchTerm = this.value.toLowerCase();
@@ -211,7 +257,7 @@
           const isAsc = header.classList.contains('asc');
           const direction = isAsc ? -1 : 1;
 
-          const sortedRows = rows.sort((a, b) => {
+          rows.sort((a, b) => { // Sort the 'rows' array directly
             const aVal = a.cells[index].textContent.trim();
             const bVal = b.cells[index].textContent.trim();
             return aVal.localeCompare(bVal, undefined, {numeric: true}) * direction;
@@ -221,12 +267,12 @@
           header.classList.toggle('asc', !isAsc);
           header.classList.toggle('desc', isAsc);
 
-          sortedRows.forEach(row => tableBody.appendChild(row));
+          rows.forEach(row => tableBody.appendChild(row)); // Re-append sorted rows
         });
       });
 
-      const checkboxes = document.querySelectorAll('.hashtag-checkbox');
-      const headerCheckboxes = document.querySelectorAll('.header-checkbox');
+      let checkboxes = document.querySelectorAll('.hashtag-checkbox'); // Use let for reassigning
+      let headerCheckboxes = document.querySelectorAll('.header-checkbox'); // Use let for reassigning
       const searchLinksContainer = document.getElementById('search-links');
 
       const baseUrls = {
@@ -272,11 +318,18 @@
         searchLinksContainer.innerHTML = linksHtml;
       }
 
+      // Initial update of search links
+      updateSearchLinks();
+
+      // Event listeners for existing checkboxes
       checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', updateSearchLinks);
       });
 
       headerCheckboxes.forEach(headerCheckbox => {
+        headerCheckbox.addEventListener('click', function(event) {
+          event.stopPropagation(); // Prevent the click from bubbling up to the th and triggering sort
+        });
         headerCheckbox.addEventListener('change', function() {
           const platform = this.dataset.platform;
           const columnCheckboxes = document.querySelectorAll(`.hashtag-checkbox[data-platform="${platform}"]`);
@@ -286,6 +339,116 @@
           updateSearchLinks();
         });
       });
+
+      addHashtagButton.addEventListener('click', addNewHashtag);
+      addHashtagInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          addNewHashtag();
+        }
+      });
+
+      function addNewHashtag() {
+        const newHashtagRaw = addHashtagInput.value.trim();
+        if (!newHashtagRaw) {
+          alert('Please enter a hashtag.');
+          return;
+        }
+
+        const newHashtag = newHashtagRaw.charAt(0).toUpperCase() + newHashtagRaw.slice(1);
+        const newHashtagLower = newHashtag.toLowerCase();
+
+        // Check for duplicates
+        const existingHashtags = Array.from(tableBody.querySelectorAll('tr td:first-child')).map(cell => cell.textContent.trim().toLowerCase());
+        if (existingHashtags.includes(newHashtagLower)) {
+          alert(`Hashtag "${newHashtag}" already exists in the table.`);
+          addHashtagInput.value = '';
+          return;
+        }
+
+        const newRow = document.createElement('tr');
+        
+        const headerNames = Array.from(document.querySelectorAll('#hashtag-table thead th')).map(th => th.textContent.trim());
+
+        headerNames.forEach((headerText, index) => {
+          const newCell = document.createElement('td');
+          if (index === 0) { // Hashtag column
+            newCell.textContent = newHashtag;
+            newCell.dataset.hashtag = newHashtag; // Add data-hashtag attribute
+          } else { // Platform columns
+            const platform = headerText.replace(' 🔗', '');
+            const urlTemplate = baseUrls[platform];
+            if (urlTemplate) {
+              const link = document.createElement('a');
+              let constructedUrl = '';
+              if (platform === 'Reddit') {
+                constructedUrl = urlTemplate + newHashtagRaw;
+              } else {
+                constructedUrl = urlTemplate + '%23' + newHashtagRaw;
+              }
+              link.href = constructedUrl;
+              link.target = '_blank';
+              link.textContent = platform; // This line needs to be fixed
+              newCell.appendChild(link);
+
+              const checkbox = document.createElement('input');
+              checkbox.type = 'checkbox';
+              checkbox.className = 'hashtag-checkbox';
+              checkbox.dataset.hashtag = newHashtag;
+              checkbox.dataset.platform = platform;
+              checkbox.addEventListener('change', updateSearchLinks);
+              newCell.prepend(checkbox, document.createTextNode(' ')); // Added space here
+            } else {
+              newCell.textContent = 'N/A';
+            }
+          }
+          newRow.appendChild(newCell);
+        });
+
+        tableBody.appendChild(newRow);
+        addHashtagInput.value = '';
+
+        rows = Array.from(tableBody.getElementsByTagName('tr'));
+        checkboxes = document.querySelectorAll('.hashtag-checkbox');
+        updateSearchLinks();
+
+        // Send the new hashtag to the Flask server
+        fetch('http://127.0.0.1:5000/add_hashtag', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ hashtag: newHashtag }),
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Server response:', data);
+          if (data.status === 'success') {
+            alert(data.message);
+          } else {
+            alert('Error adding hashtag to config: ' + data.message);
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          alert('Could not connect to the server to add hashtag.');
+        });
+      }
+
+      const exportHashtagsButton = document.getElementById('export-hashtags-button');
+      exportHashtagsButton.addEventListener('click', exportHashtags);
+
+      function exportHashtags() {
+        const allHashtags = Array.from(tableBody.querySelectorAll('tr td:first-child'))
+                               .map(cell => cell.textContent.trim());
+        
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({ hashtags: allHashtags }, null, 2));
+        const downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", "exported_hashtags.json");
+        document.body.appendChild(downloadAnchorNode); // Required for Firefox
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+      }
     });
   </script>
 </body>
