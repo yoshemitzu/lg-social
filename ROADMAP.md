@@ -19,21 +19,18 @@
 - **TODO**: Create content gap analysis (underperforming hashtags)
 - **TODO**: Build influencer network mapping from existing top poster data
 
+### 4. **Expanded View as Primary Data Portal** 📈
+- **TODO**: Implement editable fields in expanded view for manual data input and updates
+- **TODO**: Integrate manual data updates with local data storage (e.g., CSVs)
+
 ## 🚀 Short-term Goals (1-2 months)
 
-### 4. **Enhanced Analytics** 📈
-- **TODO**: Cross-platform correlation analysis
-- **TODO**: Optimal posting time recommendations
-- **TODO**: Hashtag performance scoring algorithm
-- **TODO**: Automated weekly/monthly trend reports
-
 ### 5. **User Experience** 💻
-- **TODO**: Interactive web dashboard (React/Next.js)
+- **DONE**: Implement cell selection and expanded view
+- **TODO**: Interactive web dashboard (React/Next.js) - *Consider integrating expanded view features here*
 - **TODO**: Mobile-responsive HTML templates
 - **TODO**: Real-time data refresh capabilities
 - **DONE**: Export functionality (CSV, JSON, PDF)
-- **DONE**: Implement cell selection and expanded view
-- **TODO**: Implement editable fields in expanded view for manual data input
 
 ### 6. **Automation & Monitoring** 🤖
 - **TODO**: Scheduled data collection (cron jobs)
@@ -68,6 +65,7 @@
 2. Use `python scripts/quick_update.py report` for fast report generation
 3. Use `python scripts/quick_update.py update --limit 3` for targeted updates
 4. Focus on manual analysis of existing rich dataset (1,756 posts)
+5. **Leverage expanded view for direct data iteration and improvement.**
 
 ### **Phase 2: Automated Improvements**
 1. Implement caching to reduce API calls
