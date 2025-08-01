@@ -149,6 +149,13 @@ def generate_html(headers, rows, out_path, analytics_data, max_daily_posts, hotn
     env = Environment(loader=FileSystemLoader(template_dir))
     template = env.get_template('report_template.html')
 
+    # Create a comprehensive subreddit_status for all hashtags
+    final_subreddit_status = {}
+    for hashtag_raw in config.get('hashtags', []):
+        hashtag_display = format_hashtag_for_display(hashtag_raw)
+        # Use existing status from config, or default to 'Exists'
+        final_subreddit_status[hashtag_display] = config['subreddit_status'].get(hashtag_display, 'Exists')
+
     # Render the template with data
     html = template.render(
         headers=headers,
@@ -161,7 +168,7 @@ def generate_html(headers, rows, out_path, analytics_data, max_daily_posts, hotn
         youtube_analytics_data=youtube_analytics_data,
         youtube_hotness_levels=youtube_hotness_levels,
         reddit_status_colors=config['reddit_status_colors'],
-        subreddit_status=config['subreddit_status']
+        subreddit_status=final_subreddit_status # Pass the comprehensive status
     )
 
     with open(out_path, 'w', encoding='utf-8') as f:

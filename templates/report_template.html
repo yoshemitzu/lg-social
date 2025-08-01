@@ -468,7 +468,7 @@
 
       function exportHashtags() {
         const allHashtags = Array.from(tableBody.querySelectorAll('tr td:first-child'))
-                               .map(cell => cell.textContent.trim());
+                               .map(cell => cell.dataset.hashtag); // Changed this line
         
         const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({ hashtags: allHashtags }, null, 2));
         const downloadAnchorNode = document.createElement('a');
