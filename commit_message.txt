@@ -1,4 +1,0 @@
-feat: Improve hashtag formatting and fix YouTube data
-
-- Added a helper function to make-html.py to format hashtags for display (e.g., 'teachers' -> 'Teachers').
-- Fixed an issue in update_social_data.py where YouTube data (views, likes, comments) was incorrectly showing as 0 due to null values from the scraper.

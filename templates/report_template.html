@@ -99,6 +99,22 @@
     #search-links {
       margin-bottom: 20px;
     }
+    .delete-row-btn {
+      color: red;
+      cursor: pointer;
+      margin-left: 5px;
+      font-weight: bold;
+    }
+    .selected-cell {
+      border: 2px solid blue;
+    }
+    #expanded-view {
+      margin-top: 30px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      min-height: 100px;
+    }
   </style>
 </head>
 <body>
@@ -166,17 +182,18 @@
           {% set reddit_status = subreddit_status.get(hashtag, 'Exists') %}
           <td class="{{ headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') }}{% if headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'Bluesky' %}{% if hotness_levels[hashtag] is defined %}
  hotness-{{ hotness_levels.get(hashtag, -1) }}{% endif %}{% elif headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'YouTube' %}{% if youtube_hotness_levels.get(hashtag, -1) != -1 %}
- hotness-{{ youtube_hotness_levels.get(hashtag, -1) }}{% endif %}{% endif %}" {% if headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'Reddit' %}style="background-color: {{ reddit_status_colors.get(reddit_status, '#FFFFFF') }};"{% endif %}>
+ hotness-{{ youtube_hotness_levels.get(hashtag, -1) }}{% endif %}{% endif %}" {% if headers[loop.index0] | replace(' 🔗', '') | replace(' ', '') == 'Reddit' %}style="background-color: {{ reddit_status_colors.get(reddit_status, '#FFFFFF') }};"{% endif %}
+            {% if loop.index0 == 0 %}data-hashtag="{{ hashtag }}"{% endif %}>
             {% if loop.index0 != 0 %}
             <input type="checkbox" class="hashtag-checkbox" data-hashtag="{{ hashtag }}" data-platform="{{ headers[loop.index0] | replace(' 🔗', '') }}">
             {% endif %}
             {% if loop.index0 == 0 %}
-              {{ cell.replace('#', '') }}
+              {{ cell.replace('#', '') }} <span class="delete-row-btn" data-hashtag="{{ hashtag }}">X</span>
             {% elif headers[loop.index0] == 'YouTube' and youtube_analytics_data[hashtag] %}
               <a href="{{ youtube_analytics_data[hashtag]['top_video_url'] }}" target="_blank">Top Video</a>
               <a href="https://www.youtube.com/results?search_query=%23{{ hashtag }}" target="_blank">(Search)</a>
               <br>
-              <small>Views: {{ youtube_analytics_data[hashtag]['total_views'] }} | Likes: {{ youtube_analytics_data[hashtag]['total_likes'] }} | Comments: {{ youtube_analytics_data[hashtag]['total_comments'] }}</small>
+              <small>Views: {{ youtube_analytics_data[hashtag].total_views }} | Likes: {{ youtube_analytics_data[hashtag].total_likes }} | Comments: {{ youtube_analytics_data[hashtag].total_comments }}</small>
             {% elif cell.startswith('http') %}
               <a href="{{ cell }}" target="_blank">{{ headers[loop.index0] | replace(' 🔗', '') }}</a><span style="display:none;">{{ cell }}</span>
             {% else %}
@@ -196,10 +213,21 @@
     <button id="export-hashtags-button">Export Hashtags (JSON)</button>
   </div>
 
+  <div id="expanded-view">
+    <h2>Selected Cell Details</h2>
+    <p>Click on a cell in the table to see its details here.</p>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const socket = io.connect('http://127.0.0.1:5000');
+
+      // Embed data from Jinja2 into JavaScript
+      const hotnessLevels = {{ hotness_levels | tojson }};
+      const youtubeAnalyticsData = {{ youtube_analytics_data | tojson }};
+      const redditStatusColors = {{ reddit_status_colors | tojson }};
+      const subredditStatus = {{ subreddit_status | tojson }};
 
       socket.on('connect', function() {
         console.log('Connected to Socket.IO server');
@@ -241,6 +269,7 @@
       let rows = Array.from(tableBody.getElementsByTagName('tr')); // Use let for reassigning
       const addHashtagInput = document.getElementById('new-hashtag-input');
       const addHashtagButton = document.getElementById('add-hashtag-button');
+      const expandedViewDiv = document.getElementById('expanded-view');
 
       searchInput.addEventListener('keyup', function() {
         const searchTerm = this.value.toLowerCase();
@@ -387,7 +416,7 @@
               }
               link.href = constructedUrl;
               link.target = '_blank';
-              link.textContent = platform; // This line needs to be fixed
+              link.textContent = platform; 
               newCell.appendChild(link);
 
               const checkbox = document.createElement('input');
@@ -396,7 +425,7 @@
               checkbox.dataset.hashtag = newHashtag;
               checkbox.dataset.platform = platform;
               checkbox.addEventListener('change', updateSearchLinks);
-              newCell.prepend(checkbox, document.createTextNode(' ')); // Added space here
+              newCell.prepend(checkbox, document.createTextNode(' ')); 
             } else {
               newCell.textContent = 'N/A';
             }
@@ -449,6 +478,118 @@
         downloadAnchorNode.click();
         downloadAnchorNode.remove();
       }
+
+      // Function to attach delete event listeners
+      function attachDeleteListeners() {
+        document.querySelectorAll('.delete-row-btn').forEach(button => {
+          button.removeEventListener('click', handleDeleteClick); // Prevent duplicate listeners
+          button.addEventListener('click', handleDeleteClick);
+        });
+      }
+
+      function handleDeleteClick(event) {
+        const hashtagToDelete = event.target.dataset.hashtag;
+        const rowToDelete = event.target.closest('tr');
+        if (rowToDelete) {
+          rowToDelete.remove();
+          // Update the 'rows' array to reflect the removal
+          rows = rows.filter(row => row !== rowToDelete);
+          // Update search links as a hashtag has been removed
+          updateSearchLinks();
+        }
+      }
+
+      // Initial attachment of listeners for existing rows
+      attachDeleteListeners();
+
+      // Override addNewHashtag to also attach delete listeners to new rows
+      const originalAddNewHashtag = addNewHashtag;
+      addNewHashtag = function() {
+        originalAddNewHashtag.apply(this, arguments);
+        attachDeleteListeners();
+      };
+
+      let selectedCell = null; // To keep track of the currently selected cell
+
+      function attachCellClickListeners() {
+        document.querySelectorAll('#table-body td').forEach(cell => {
+          cell.removeEventListener('click', handleCellClick); // Prevent duplicate listeners
+          cell.addEventListener('click', handleCellClick);
+        });
+      }
+
+      function handleCellClick(event) {
+        // Prevent selection if clicking on interactive elements within the cell
+        if (event.target.tagName === 'INPUT' || event.target.tagName === 'A' || event.target.classList.contains('delete-row-btn')) {
+          return;
+        }
+
+        // Remove previous selection
+        if (selectedCell) {
+          selectedCell.classList.remove('selected-cell');
+        }
+
+        // Set new selection
+        selectedCell = event.currentTarget;
+        selectedCell.classList.add('selected-cell');
+
+        // Populate expanded view
+        populateExpandedView(selectedCell);
+      }
+
+      function populateExpandedView(cell) {
+        const rowIndex = cell.closest('tr').rowIndex - 1; // -1 because of header row
+        const colIndex = cell.cellIndex;
+        const hashtag = cell.closest('tr').querySelector('td:first-child').dataset.hashtag; // Get hashtag from data-hashtag attribute of the first cell
+        const platform = headers[colIndex].dataset.sort; // Get platform from header data-sort
+
+        let detailsHtml = `<h3>Details for ${hashtag} on ${platform}</h3>`;
+
+        // Add direct link to social media site
+        const socialMediaLink = baseUrls[platform];
+        if (socialMediaLink) {
+            let fullLink = socialMediaLink;
+            if (platform === 'Reddit') {
+                fullLink += hashtag; // Reddit uses subreddit name directly
+            } else {
+                fullLink += `%23${hashtag}`; // Other platforms use #hashtag
+            }
+            detailsHtml += `<p><a href="${fullLink}" target="_blank">View on ${platform}</a></p>`;
+        }
+
+        if (platform === 'Bluesky') {
+          const hotness = hotnessLevels[hashtag] !== undefined ? hotnessLevels[hashtag] : 'N/A';
+          detailsHtml += `<p>Bluesky Hotness: ${hotness}</p>`;
+        } else if (platform === 'YouTube') {
+          const youtubeData = youtubeAnalyticsData[hashtag];
+          if (youtubeData) {
+            detailsHtml += `<p>Total Views: ${youtubeData.total_views}</p>`;
+            detailsHtml += `<p>Total Likes: ${youtubeData.total_likes}</p>`;
+            detailsHtml += `<p>Total Comments: ${youtubeData.total_comments}</p>`;
+            detailsHtml += `<p>Top Video: <a href="${youtubeData.top_video_url}" target="_blank">${youtubeData.top_video_url}</a></p>`;
+          } else {
+            detailsHtml += `<p>No YouTube data available.</p>`;
+          }
+        } else if (platform === 'Reddit') {
+          const status = subredditStatus[hashtag] !== undefined ? subredditStatus[hashtag] : 'N/A';
+          detailsHtml += `<p>Reddit Subreddit Status: ${status}</p>`;
+        } else {
+          detailsHtml += `<p>No specific details available for this platform.</p>`;
+        }
+
+        expandedViewDiv.innerHTML = detailsHtml;
+      }
+
+      // Initial attachment of cell click listeners
+      attachCellClickListeners();
+
+      // Override addNewHashtag to also attach cell click listeners to new rows
+      const originalAddNewHashtagForCells = addNewHashtag;
+      addNewHashtag = function() {
+        originalAddNewHashtagForCells.apply(this, arguments);
+        attachCellClickListeners();
+      };
+
     });
   </script>
 </body>

@@ -10,8 +10,9 @@
 
 ### 2. **Data Quality & Completeness** 📊
 - **TODO**: Fix missing Reddit analytics (RedditAnalytics.csv)
-- **TODO**: Add data validation and error recovery
 - **TODO**: Implement incremental updates (only fetch new posts)
+- **DONE**: Ensure correct data population in expanded view (Bluesky hotness, YouTube analytics)
+- **TODO**: Fix N/A for Reddit Subreddit Status in expanded view
 
 ### 3. **Actionable Insights** 🧠
 - **TODO**: Add trend detection (momentum vs declining hashtags)
@@ -30,7 +31,9 @@
 - **TODO**: Interactive web dashboard (React/Next.js)
 - **TODO**: Mobile-responsive HTML templates
 - **TODO**: Real-time data refresh capabilities
-- **TODO**: Export functionality (CSV, JSON, PDF)
+- **DONE**: Export functionality (CSV, JSON, PDF)
+- **DONE**: Implement cell selection and expanded view
+- **TODO**: Implement editable fields in expanded view for manual data input
 
 ### 6. **Automation & Monitoring** 🤖
 - **TODO**: Scheduled data collection (cron jobs)
